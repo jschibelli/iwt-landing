@@ -1,0 +1,19 @@
+{
+  "heading": "Empowering Digital Innovation",
+  "subheading": "Custom web solutions for ambitious businesses. We design, build, and scale high-performance digital products.",
+  "cta": {
+    "label": "Get Started",
+    "href": "#contact"
+  },
+  "announcement": {
+    "label": "Introducing SynaplyAI",
+    "href": "#synaplyai"
+  },
+  "clientLogos": [
+    { "src": "/globe.svg", "alt": "Client 1" },
+    { "src": "/file.svg", "alt": "Client 2" },
+    { "src": "/window.svg", "alt": "Client 3" },
+    { "src": "/next.svg", "alt": "Client 4" },
+    { "src": "/vercel.svg", "alt": "Client 5" }
+  ]
+} 

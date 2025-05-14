@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Discovery",
+    "description": "We learn about your business, goals, and users to define project requirements.",
+    "icon": "Search"
+  },
+  {
+    "title": "Design",
+    "description": "We create wireframes and high-fidelity designs for a seamless user experience.",
+    "icon": "Pen"
+  },
+  {
+    "title": "Development",
+    "description": "Our engineers build robust, scalable solutions using modern technologies.",
+    "icon": "Code"
+  },
+  {
+    "title": "Launch",
+    "description": "We deploy, monitor, and optimize your product for a successful launch.",
+    "icon": "Rocket"
+  },
+  {
+    "title": "Support",
+    "description": "Ongoing support and improvements to ensure your continued success.",
+    "icon": "LifeBuoy"
+  }
+] 
