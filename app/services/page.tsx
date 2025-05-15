@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Code, Palette, Cloud, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { Code, Palette, Cloud, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const iconMap = {
@@ -11,93 +11,125 @@ const iconMap = {
   Sparkles,
 };
 
-type Service = {
+interface Service {
   title: string;
   description: string;
   icon: keyof typeof iconMap;
-};
+  features: string[];
+  caseStudies: {
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+  }[];
+}
+
+interface ServicesData {
+  hero: {
+    heading: string;
+    subheading: string;
+    description: string;
+  };
+  services: Service[];
+  cta: {
+    heading: string;
+    description: string;
+    button: {
+      label: string;
+      href: string;
+    };
+  };
+}
 
 export default function ServicesPage() {
-  const [services, setServices] = useState<Service[]>([]);
+  const [data, setData] = useState<ServicesData | null>(null);
 
   useEffect(() => {
-    fetch("/services.json")
+    fetch("/services-detailed.json")
       .then((res) => res.json())
-      .then(setServices);
+      .then(setData);
   }, []);
 
+  if (!data) return null;
+
   return (
-    <main className="bg-[#111827] text-white min-h-screen">
+    <main className="bg-gray-900 text-white">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-teal-500 via-blue-500 to-indigo-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">Our Services</h1>
-          <p className="text-lg md:text-2xl text-white/90 mb-6">Explore our full range of digital solutions designed to help your business thrive.</p>
+      <section className="relative py-16 md:py-24 overflow-hidden" style={{ backgroundImage: 'url(/circuit-pattern.svg)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }}>
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-teal-500 opacity-20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-orange-500 opacity-20 rounded-full blur-3xl" />
         </div>
-      </section>
-
-      {/* Services List */}
-      <section className="max-w-5xl mx-auto px-4 py-16 grid gap-16">
-        {services.map((service, i) => {
-          const Icon = iconMap[service.icon] || Code;
-          const isEven = i % 2 === 0;
-          return (
-            <motion.div
-              key={service.title}
-              className={`flex flex-col md:flex-row ${isEven ? '' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 bg-[#181f2a] border border-gray-800 border-t-4 border-teal-500 rounded-xl p-8 shadow-lg`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6, type: 'spring' }}
-            >
-              <motion.div
-                className="flex-shrink-0 flex items-center justify-center w-32 h-32 rounded-full bg-[#111827] border-4 border-teal-500 mb-6 md:mb-0 shadow group-hover:shadow-xl transition-shadow"
-                whileHover={{ scale: 1.08, boxShadow: '0 8px 32px 0 rgba(21,184,161,0.18)' }}
-              >
-                <Icon size={56} className="text-teal-400" />
-              </motion.div>
-              <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-2">{service.title}</h2>
-                <p className="text-lg text-gray-300 mb-4">{service.description}</p>
-                <ul className="mb-0 list-disc list-inside text-teal-300 space-y-1">
-                  <li>Feature 1 for {service.title}</li>
-                  <li>Feature 2 for {service.title}</li>
-                  <li>Feature 3 for {service.title}</li>
-                </ul>
-              </div>
-            </motion.div>
-          );
-        })}
-      </section>
-
-      {/* Related Case Studies Section (placeholder) */}
-      <section className="bg-[#181f2a] py-16">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8">Related Case Studies</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {/* Placeholder cards */}
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="bg-[#232b3a] rounded-xl p-6 shadow border border-gray-800 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-teal-500 mb-4 flex items-center justify-center text-white font-bold text-2xl">{n}</div>
-                <h3 className="text-xl font-heading font-semibold mb-2">Case Study {n}</h3>
-                <p className="text-gray-300 mb-4">A brief description of the case study and its impact.</p>
-                <Link href="/work" className="text-teal-400 hover:underline">View Case Study</Link>
-              </div>
-            ))}
-          </div>
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">{data.hero.heading}</h1>
+          <p className="text-xl md:text-2xl text-teal-400 font-semibold mb-4">{data.hero.subheading}</p>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">{data.hero.description}</p>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-teal-500 via-blue-500 to-indigo-600 text-white text-center">
-        <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Ready to transform your business?</h2>
-          <p className="text-lg mb-6">Contact us today to discuss your project and see how we can help you achieve your goals.</p>
+      {/* Services Sections */}
+      {data.services.map((service, index) => {
+        const Icon = iconMap[service.icon];
+        return (
+          <section key={service.title} className={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-900'}`}>
+            <div className="max-w-5xl mx-auto px-4">
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                {/* Service Info */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="p-3 rounded-lg bg-teal-500/10 text-teal-400">
+                      <Icon size={32} />
+                    </span>
+                    <h2 className="text-3xl font-heading font-bold">{service.title}</h2>
+                  </div>
+                  <p className="text-lg text-gray-300 mb-8">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-1.5 w-2 h-2 rounded-full bg-teal-400" />
+                        <span className="text-gray-200">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Case Study */}
+                {service.caseStudies[0] && (
+                  <div className="flex-1">
+                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                      <img
+                        src={service.caseStudies[0].image}
+                        alt={service.caseStudies[0].title}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold mb-2">{service.caseStudies[0].title}</h3>
+                        <p className="text-gray-300 mb-4">{service.caseStudies[0].description}</p>
+                        <Link
+                          href={service.caseStudies[0].link}
+                          className="inline-block px-4 py-2 rounded bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
+                        >
+                          View Case Study
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-gray-800">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">{data.cta.heading}</h2>
+          <p className="text-lg text-gray-300 mb-8">{data.cta.description}</p>
           <Link
-            href="/contact"
-            className="px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            href={data.cta.button.href}
+            className="inline-block px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
-            Get In Touch
+            {data.cta.button.label}
           </Link>
         </div>
       </section>

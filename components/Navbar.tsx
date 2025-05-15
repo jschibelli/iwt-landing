@@ -52,7 +52,7 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <Link href="#contact" className="ml-4 px-5 py-2 rounded bg-orange-500 text-white font-semibold hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+            <Link href="/contact" className="ml-4 px-5 py-2 rounded bg-orange-500 text-white font-semibold hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
               Contact Us
             </Link>
           </li>
@@ -105,22 +105,12 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <a
-                href="#contact"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  const el = document.querySelector('#contact');
-                  if (el) {
-                    setTimeout(() => {
-                      (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
-                    }, 100);
-                  }
-                }}
+              <Link
+                href="/contact"
                 className="block py-2 px-2 rounded bg-orange-500 text-white font-semibold hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
               >
                 Contact Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
