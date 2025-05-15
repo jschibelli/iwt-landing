@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       to: process.env.CONTACT_EMAIL || "contact@intrawebtech.com",
       subject: "New Contact Form Submission",
       text: emailContent,
-      reply_to: email,
+      replyTo: email,
     });
 
     return NextResponse.json(
