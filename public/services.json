@@ -13,5 +13,10 @@
     "title": "Cloud & DevOps",
     "description": "Modern cloud infrastructure and automation for performance and reliability.",
     "icon": "Cloud"
+  },
+  {
+    "title": "AI Solutions",
+    "description": "Leverage artificial intelligence to automate, analyze, and innovate your business processes.",
+    "icon": "Sparkles"
   }
 ] 

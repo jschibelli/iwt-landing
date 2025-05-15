@@ -19,8 +19,12 @@ export default function FeaturedWork() {
   }, []);
 
   return (
-    <section id="work" className="bg-gray-900 py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="work" className="relative bg-gray-900 py-16 md:py-24 overflow-hidden">
+      {/* Top SVG Wave */}
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-20" style={{ filter: 'drop-shadow(0 8px 24px #15B8A180)' }}>
+        <path fill="#15B8A1" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" />
+      </svg>
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-10 text-white">Featured Work</h2>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
@@ -45,6 +49,10 @@ export default function FeaturedWork() {
           ))}
         </div>
       </div>
+      {/* Bottom SVG Wave */}
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-20 rotate-180" style={{ filter: 'drop-shadow(0 -8px 24px #15B8A180)' }}>
+        <path fill="#15B8A1" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" />
+      </svg>
     </section>
   );
 } 

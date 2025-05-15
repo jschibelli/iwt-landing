@@ -2,19 +2,19 @@
   {
     "title": "E-Commerce Platform",
     "description": "A scalable online store with real-time inventory and seamless checkout.",
-    "image": "https://via.placeholder.com/600x400?text=E-Commerce",
+    "image": "https://picsum.photos/seed/ecommerce/600/400",
     "link": "#"
   },
   {
     "title": "SaaS Dashboard",
     "description": "Analytics dashboard for SaaS with custom reporting and user management.",
-    "image": "https://via.placeholder.com/600x400?text=SaaS+Dashboard",
+    "image": "https://picsum.photos/seed/saas/600/400",
     "link": "#"
   },
   {
     "title": "Portfolio Website",
     "description": "Personal portfolio with blog, projects, and contact form.",
-    "image": "https://via.placeholder.com/600x400?text=Portfolio",
+    "image": "https://picsum.photos/seed/portfolio/600/400",
     "link": "#"
   }
 ] 

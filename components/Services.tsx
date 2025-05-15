@@ -1,12 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Code, Palette, Cloud } from "lucide-react";
+import { Code, Palette, Cloud, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 const iconMap = {
   Code: Code,
   Palette: Palette,
   Cloud: Cloud,
+  Sparkles: Sparkles,
 };
 
 type Service = {
@@ -25,29 +27,34 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-gray-900 text-white py-16 md:py-24">
+    <section id="services" className="bg-[#111827] text-white py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-10">Our Services</h2>
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {services.map((service, i) => {
             const Icon = iconMap[service.icon];
             return (
-              <div
+              <motion.div
                 key={service.title}
-                className="flex flex-col items-center text-center p-8 rounded-lg shadow hover:shadow-lg transition-shadow bg-gray-800 border border-gray-700"
+                className="flex flex-col items-center text-center p-8 rounded-xl shadow-lg bg-[#181f2a] border border-gray-800 border-t-4 border-teal-500 hover:shadow-2xl transition-shadow group cursor-pointer"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6, type: 'spring' }}
+                whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(21,184,161,0.18)' }}
               >
-                <span className="mb-4 p-4 rounded-full bg-gray-900 text-teal-400">
+                <span className="mb-4 p-4 rounded-full bg-[#111827] text-teal-400 border-2 border-teal-500 group-hover:bg-teal-500 group-hover:text-white transition-colors">
                   <Icon size={40} />
                 </span>
                 <h3 className="text-xl font-heading font-semibold mb-2 text-white">{service.title}</h3>
-                <p className="text-base font-body text-gray-300 mb-2">{service.description}</p>
-              </div>
+                <p className="text-base font-body text-gray-300 mb-0">{service.description}</p>
+              </motion.div>
             );
           })}
         </div>
         <div className="flex justify-center">
           <Link
-            href="#services"
+            href="/services"
             className="px-8 py-3 rounded border-2 border-orange-500 bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
             Explore Our Services
