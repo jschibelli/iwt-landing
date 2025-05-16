@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Brain } from "lucide-react";
+import { useState } from "react";
+import { TeamProcess } from "./team-process";
 
 const team = [
   {
@@ -42,6 +44,10 @@ const team = [
 ];
 
 export default function TeamPage() {
+  const [showAgentModal, setShowAgentModal] = useState(false);
+  const openAgentModal = () => setShowAgentModal(true);
+  const closeAgentModal = () => setShowAgentModal(false);
+
   return (
     <main className="bg-gray-900 text-white min-h-screen">
       {/* Team Hero Section */}
@@ -77,10 +83,15 @@ export default function TeamPage() {
                 </div>
                 {member.name !== "John Schibelli" && (
                   <span
-                    className="absolute bg-teal-700 border rounded-full p-1 flex items-center justify-center shadow-lg"
+                    className="absolute bg-teal-700 border rounded-full p-1 flex items-center justify-center shadow-lg group"
                     style={{ right: '5px', bottom: 0, width: 44, height: 44, borderColor: '#2dd4bf', borderWidth: 1 }}
                   >
-                    <Brain size={24} className="text-teal-300" stroke="#2dd4bf" strokeWidth={1} />
+                    <span className="relative flex items-center">
+                      <Brain size={24} className="text-teal-300 cursor-pointer" stroke="#2dd4bf" strokeWidth={1} />
+                      <span className="absolute left-1/2 bottom-full mb-2 w-64 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-within:scale-100 transition-transform origin-bottom bg-white text-gray-900 text-xs rounded-lg shadow-lg p-3 z-50">
+                        AI Agents are intelligent, task-specific digital collaborators developed in-house by IntraWeb Technologies. They assist in design, engineering, strategy, and operations—always working under the direction of human leadership.
+                      </span>
+                    </span>
                   </span>
                 )}
               </div>
@@ -91,6 +102,18 @@ export default function TeamPage() {
           ))}
         </div>
       </section>
+      {/* CTA Section */}
+      <section className="text-center mt-20 py-12 bg-gradient-to-r from-[#0a2236] to-[#181f2a]">
+        <div className="max-w-2xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-white mb-2">Want to collaborate with our hybrid team?</h2>
+          <p className="text-gray-300 mb-4">We're ready to build, scale, and launch—together.</p>
+          <a href="/contact" className="inline-block px-8 py-3 rounded bg-teal-500 hover:bg-orange-500 text-white font-semibold text-lg shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+            Get In Touch
+          </a>
+        </div>
+      </section>
+      {/* Team Process Section */}
+      <TeamProcess />
     </main>
   );
 } 
