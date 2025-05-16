@@ -43,10 +43,23 @@ const team = [
 
 export default function TeamPage() {
   return (
-    <main className="bg-gray-900 text-white min-h-screen py-16 md:py-24">
-      <section className="max-w-6xl mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-heading font-bold text-center mb-4">Meet Our Team</h1>
-        <p className="text-lg text-teal-400 font-semibold text-center mb-12">The people behind IntraWeb Technologies</p>
+    <main className="bg-gray-900 text-white min-h-screen">
+      {/* Team Hero Section */}
+      <section className="relative overflow-hidden text-white pt-16 pb-12 md:pt-24 md:pb-20" style={{ backgroundColor: '#0a2236', backgroundImage: 'url(/pentagon-pattern.svg)', backgroundRepeat: 'repeat', backgroundSize: '80px 80px' }}>
+        {/* Top inside shadow */}
+        <div className="absolute top-0 left-0 w-full h-10 md:h-16 pointer-events-none select-none" style={{boxShadow: 'inset 0 16px 32px -8px #0008'}} />
+        {/* Bottom inside shadow */}
+        <div className="absolute bottom-0 left-0 w-full h-10 md:h-16 pointer-events-none select-none" style={{boxShadow: 'inset 0 -16px 32px -8px #0008'}} />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">Meet the IntraWeb Team</h1>
+          <p className="text-lg md:text-2xl font-body mb-8 text-white/90">
+            We're a hybrid team of expert professionals and AI-powered agents, collaborating to deliver cutting-edge digital experiences.<br />
+            Every AI agent is built with purpose and precision, and every human lead ensures our solutions stay aligned with your goals.
+          </p>
+        </div>
+      </section>
+      {/* Team Section */}
+      <section className="max-w-6xl mx-auto px-4 pt-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {team.map((member) => (
             <div key={member.name} className="bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-700 relative overflow-visible">
