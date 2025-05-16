@@ -63,12 +63,14 @@ export default function Hero() {
           {content.subheading}
         </p>
         {/* CTA */}
-        <Link
-          href={content.cta.href}
+        <a
+          href="https://synaplyai.intrawebtech.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg shadow hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
         >
-          {content.cta.label}
-        </Link>
+          Get Started
+        </a>
         {/* Client Logos */}
         {/* Removed client logos grid for a cleaner Hero section */}
       </div>

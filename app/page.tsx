@@ -11,13 +11,25 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Services />
-      <FeaturedWork />
-      <Process />
-      <About />
-      <Testimonials />
+      <section id="services">
+        <Services />
+      </section>
+      <section id="work">
+        <FeaturedWork />
+      </section>
+      <section id="process">
+        <Process />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="testimonials">
+        <Testimonials />
+      </section>
       <SynaplyAI />
-      <FAQ />
+      <section id="faq">
+        <FAQ />
+      </section>
       {/* Services section will be added here next */}
     </main>
   );

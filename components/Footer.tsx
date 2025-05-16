@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Mail, Twitter, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
             <p className="text-gray-300">Let's build something amazing together.</p>
           </div>
           <Link
-            href="#contact"
+            href="/contact"
             className="px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
             Contact Us
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
       </div>
       {/* Footer Main */}
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Column 1: Logo & Social */}
         <div>
           <div className="flex items-center gap-2 mb-4">
@@ -33,28 +33,29 @@ export default function Footer() {
             <span className="font-heading font-bold text-white text-lg">IntraWeb</span>
           </div>
           <div className="flex gap-3">
-            <a href="#" aria-label="Twitter" className="hover:text-teal-400"><Twitter size={20} /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-teal-400"><Linkedin size={20} /></a>
-            <a href="#" aria-label="GitHub" className="hover:text-teal-400"><Github size={20} /></a>
+            <a href="https://linkedin.com/company/intraweb-technologies" aria-label="LinkedIn" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
+            <a href="https://facebook.com/intrawebtech" aria-label="Facebook" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
+            <a href="https://www.threads.net/@intrawebtech" aria-label="Threads" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 50 50"><path d="M25 2C12.3 2 2 12.3 2 25s10.3 23 23 23 23-10.3 23-23S37.7 2 25 2zm0 44C13.5 46 4 36.5 4 25S13.5 4 25 4s21 9.5 21 21-9.5 21-21 21zm0-38c-9.4 0-17 7.6-17 17s7.6 17 17 17 17-7.6 17-17-7.6-17-17-17zm0 32c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15zm0-28c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13-5.8-13-13-13z"/></svg></a>
+            <a href="https://github.com/intrawebtech" aria-label="GitHub" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
           </div>
         </div>
         {/* Column 2: Links */}
         <div>
           <h4 className="font-semibold text-white mb-2">Company</h4>
           <ul className="space-y-1">
-            <li><Link href="#about" className="hover:text-teal-400">About</Link></li>
-            <li><Link href="#services" className="hover:text-teal-400">Services</Link></li>
-            <li><Link href="#work" className="hover:text-teal-400">Work</Link></li>
-            <li><Link href="#process" className="hover:text-teal-400">Process</Link></li>
+            <li><Link href="/about" className="hover:text-teal-400">About</Link></li>
+            <li><Link href="/services" className="hover:text-teal-400">Services</Link></li>
+            <li><Link href="/portfolio" className="hover:text-teal-400">Portfolio</Link></li>
+            <li><Link href="/process" className="hover:text-teal-400">Process</Link></li>
           </ul>
         </div>
         {/* Column 3: Resources */}
         <div>
           <h4 className="font-semibold text-white mb-2">Resources</h4>
           <ul className="space-y-1">
-            <li><Link href="#tech-stack" className="hover:text-teal-400">Tech Stack</Link></li>
-            <li><Link href="#testimonials" className="hover:text-teal-400">Testimonials</Link></li>
-            <li><Link href="#faq" className="hover:text-teal-400">FAQ</Link></li>
+            <li><Link href="/team" className="hover:text-teal-400">Team</Link></li>
+            <li><Link href="/testimonials" className="hover:text-teal-400">Testimonials</Link></li>
+            <li><Link href="/faq" className="hover:text-teal-400">FAQ</Link></li>
           </ul>
         </div>
         {/* Column 4: Newsletter */}
@@ -80,8 +81,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center mt-6 text-sm text-gray-500">
         <div>&copy; {new Date().getFullYear()} IntraWeb Technologies. All rights reserved.</div>
         <div className="flex gap-4 mt-2 md:mt-0">
-          <a href="#" className="hover:text-teal-400">Privacy Policy</a>
-          <a href="#" className="hover:text-teal-400">Terms of Service</a>
+          <Link href="/privacy" className="hover:text-teal-400">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-teal-400">Terms of Service</Link>
         </div>
       </div>
     </footer>

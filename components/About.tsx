@@ -52,15 +52,12 @@ export default function About() {
           ))}
         </ul>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          {content.ctas.map((cta, i) => (
-            <Link
-              key={i}
-              href={cta.href}
-              className={`px-8 py-3 rounded font-semibold text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${i === 0 ? 'bg-orange-500 text-white hover:bg-teal-500' : 'border-2 border-teal-400 text-teal-400 hover:bg-teal-500 hover:text-white'}`}
-            >
-              {cta.label}
-            </Link>
-          ))}
+          <Link
+            href="/team"
+            className="px-8 py-3 rounded font-semibold text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 bg-orange-500 text-white hover:bg-teal-500"
+          >
+            Meet Our Team
+          </Link>
         </div>
       </div>
     </section>

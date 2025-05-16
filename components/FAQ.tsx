@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
@@ -44,12 +45,12 @@ export default function FAQ() {
           ))}
         </div>
         <div className="flex justify-center mt-10">
-          <a
-            href="#contact"
+          <Link
+            href="/faq"
             className="px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
-            Still have questions? Contact us
-          </a>
+            Still have questions?
+          </Link>
         </div>
       </div>
     </section>
