@@ -1,13 +1,34 @@
 "use client";
 import { CheckCircle, Search, Pen, Code, Rocket, LifeBuoy, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const steps = [
-  { icon: Search, title: "Discovery", description: "We start by understanding your business goals, challenges, and requirements. This phase includes stakeholder interviews, research, and project scoping to ensure alignment from day one." },
-  { icon: Pen, title: "Design", description: "Our design team creates wireframes, prototypes, and high-fidelity mockups. We focus on user experience, accessibility, and visual appeal, iterating with your feedback." },
-  { icon: Code, title: "Development", description: "We build robust, scalable solutions using modern technologies. Our agile process includes regular demos, code reviews, and continuous integration for quality and transparency." },
-  { icon: Rocket, title: "Launch", description: "After thorough testing and QA, we deploy your solution to production. We handle all aspects of launch, from infrastructure setup to go-live support, ensuring a smooth rollout." },
-  { icon: LifeBuoy, title: "Support", description: "Post-launch, we provide ongoing support, monitoring, and optimization. Our team is available for updates, troubleshooting, and new feature development as your needs evolve." },
+  {
+    icon: Search,
+    title: "Discovery",
+    description: "We start by understanding your business goals, challenges, and requirements. This phase includes stakeholder interviews, research, and project scoping to ensure alignment from day one.",
+  },
+  {
+    icon: Pen,
+    title: "Design",
+    description: "Our design team creates wireframes, prototypes, and high-fidelity mockups. We focus on user experience, accessibility, and visual appeal, iterating with your feedback.",
+  },
+  {
+    icon: Code,
+    title: "Development",
+    description: "We build robust, scalable solutions using modern technologies. Our agile process includes regular demos, code reviews, and continuous integration for quality and transparency.",
+  },
+  {
+    icon: Rocket,
+    title: "Launch",
+    description: "After thorough testing and QA, we deploy your solution to production. We handle all aspects of launch, from infrastructure setup to go-live support, ensuring a smooth rollout.",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Support",
+    description: "Post-launch, we provide ongoing support, monitoring, and optimization. Our team is available for updates, troubleshooting, and new feature development as your needs evolve.",
+  },
 ];
 
 const benefits = [
@@ -18,10 +39,21 @@ const benefits = [
   "Dedicated post-launch support and partnership",
 ];
 
-export default function ProcessPage() {
+interface Project {
+  name: string;
+  summary: string;
+}
+
+interface ProcessClientProps {
+  project: Project;
+}
+
+export default function ProcessClient({ project }: ProcessClientProps) {
+  // Responsive geometry for both desktop and mobile
   const [containerSize, setContainerSize] = useState(400);
   useEffect(() => {
     function handleResize() {
+      // For all screens: 95vw up to 700px
       const width = Math.min(Math.max(window.innerWidth * 0.95, 220), 700);
       setContainerSize(width);
     }
@@ -30,14 +62,15 @@ export default function ProcessPage() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const cardWidth = containerSize * 0.22;
+  // Geometry as fractions of container size
+  const cardWidth = containerSize * 0.22; // square cards
   const cardHeight = cardWidth;
-  const iconCircle = cardWidth * 0.36;
-  const iconSize = iconCircle * 0.6;
+  const iconCircle = cardWidth * 0.36; // round icon background
+  const iconSize = iconCircle * 0.6; // icon inside the circle
   const headingFontSize = `clamp(0.85rem,${cardWidth * 0.13}px,1.05rem)`;
   const clientCenterX = containerSize / 2;
   const clientCenterY = containerSize / 2;
-  const radius = containerSize * 0.32;
+  const radius = containerSize * 0.32; // tight pentagon
   const processCenters = Array.from({ length: 5 }).map((_, i) => {
     const angle = (-90 + i * 72) * (Math.PI / 180);
     return [
@@ -45,11 +78,13 @@ export default function ProcessPage() {
       clientCenterY + radius * Math.sin(angle),
     ];
   });
+  const polygonPointsStr = processCenters.map(([x, y]) => `${x},${y}`).join(' ');
 
   function getEdgePoint(cx: number, cy: number, px: number, py: number, cardSize: number) {
     const dx = px - cx;
     const dy = py - cy;
     const half = cardSize / 2;
+    // Find scale to reach the edge of the square
     const scale = half / Math.max(Math.abs(dx), Math.abs(dy));
     return {
       x: cx + dx * scale,
@@ -59,14 +94,17 @@ export default function ProcessPage() {
 
   return (
     <main className="bg-gray-900 text-white min-h-screen">
+      {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-teal-500 via-blue-500 to-indigo-600 text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">Our Process</h1>
-          <p className="text-lg md:text-2xl font-body mb-6 text-white/90">How we deliver results for our clients, step by step.</p>
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">{project.name}</h1>
+          <p className="text-lg md:text-2xl font-body mb-6 text-white/90">{project.summary}</p>
         </div>
       </section>
+      {/* Pentagon Layout: Always visible, responsive size, prominent on mobile */}
       <section className="py-8 md:py-16 relative overflow-visible">
         <div className="relative mx-auto" style={{ width: containerSize, height: containerSize, maxWidth: '100%' }}>
+          {/* SVG: Pentagon and lines */}
           <svg
             width={containerSize}
             height={containerSize}
@@ -90,6 +128,7 @@ export default function ProcessPage() {
               );
             })}
           </svg>
+          {/* Center card for Client */}
           <div
             className="absolute flex flex-col items-center justify-center text-center bg-[#181F2A] rounded-[18px] shadow-lg z-10"
             style={{
@@ -111,6 +150,7 @@ export default function ProcessPage() {
             </span>
             <h3 className="font-heading font-bold mb-0 text-white text-center whitespace-nowrap" style={{ fontSize: headingFontSize, marginTop: 2, letterSpacing: 0.2, lineHeight: 1.1 }}>Client</h3>
           </div>
+          {/* Process cards at each vertex */}
           {processCenters.map(([x, y], i) => {
             const step = steps[i];
             const Icon = step.icon;
@@ -141,6 +181,7 @@ export default function ProcessPage() {
           })}
         </div>
       </section>
+      {/* Benefits Section */}
       <section className="py-12 md:py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Why Our Process Works</h2>
@@ -154,6 +195,7 @@ export default function ProcessPage() {
           </ul>
         </div>
       </section>
+      {/* Example/Case Study Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Process in Action: E-Commerce Platform Launch</h2>

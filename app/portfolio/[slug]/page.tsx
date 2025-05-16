@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { Project } from "@/types/project";
+import type { Metadata } from "next";
+import projectsData from "@/data/projects.json";
 import ProblemSolution from "@/components/portfolio/ProblemSolution";
 import ProcessTimeline from "@/components/portfolio/ProcessTimeline";
 import ResultsHighlights from "@/components/portfolio/ResultsHighlights";
@@ -8,14 +9,7 @@ import TeamComposition from "@/components/portfolio/TeamComposition";
 import ClientTestimonial from "@/components/portfolio/ClientTestimonial";
 import ContactCTA from "@/components/portfolio/ContactCTA";
 import NavPrevNext from "@/components/portfolio/NavPrevNext";
-import projectsData from "@/data/projects.json";
 import Image from "next/image";
-
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
 
 export async function generateStaticParams() {
   return projectsData.projects.map((project) => ({
@@ -23,8 +17,18 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CaseStudyPage({ params }: PageProps) {
-  const project = projectsData.projects.find((p) => p.slug === params.slug);
+export const metadata: Metadata = {
+  title: 'Portfolio Project',
+  description: 'View our portfolio project details',
+};
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = projectsData.projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
