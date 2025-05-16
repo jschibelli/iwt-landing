@@ -176,10 +176,10 @@ export default function ProcessPage() {
       <section className="py-12 md:py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Why Our Process Works</h2>
-          <ul className="grid gap-4 md:grid-cols-2 text-left max-w-2xl mx-auto mb-8">
+          <ul className="grid gap-5 md:grid-cols-2 text-left max-w-2xl mx-auto mb-8">
             {benefits.map((b, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-200">
-                <CheckCircle className="text-teal-400 mt-1" size={20} />
+              <li key={i} className="flex items-start gap-4 text-gray-200">
+                <CheckCircle className="text-teal-400 mt-1 flex-shrink-0" size={iconSize} />
                 <span>{b}</span>
               </li>
             ))}

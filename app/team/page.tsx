@@ -5,37 +5,37 @@ const team = [
   {
     name: "John Schibelli",
     title: "Founder / CEO",
-    image: "/avatars/john.jpg",
+    image: "/john_schibelli.jpg",
     bio: "John provides strategic vision, product direction, and final approvals for all projects. He is passionate about building innovative solutions that drive business growth.",
   },
   {
     name: "Alex Reyes",
     title: "Project Manager",
-    image: "/avatars/alex.jpg",
+    image: "/alex_reyes.png",
     bio: "Alex coordinates cross-functional teams, manages timelines, and ensures seamless task execution from start to finish.",
   },
   {
     name: "Nico Alvarez",
     title: "Frontend Lead",
-    image: "/avatars/nico.jpg",
+    image: "/nico.png",
     bio: "Nico leads UI implementation, component architecture, and ensures responsive, accessible interfaces across all platforms.",
   },
   {
     name: "Eli Noor",
     title: "Backend Lead",
-    image: "/avatars/eli.jpg",
+    image: "/eli-noor.png",
     bio: "Eli designs robust databases, develops API endpoints, and handles authentication and multi-tenant logic.",
   },
   {
     name: "Aria Das",
     title: "AI/ML Lead",
-    image: "/avatars/aria.jpg",
+    image: "/Aria_das.png",
     bio: "Aria integrates custom AI models, manages token state logic, and develops agent workflows for intelligent automation.",
   },
   {
     name: "Sophie Tran",
     title: "UX/UI Lead",
-    image: "/avatars/sophie.jpg",
+    image: "/sophie_tran.png",
     bio: "Sophie crafts visual design, UX flows, and Figma mockups, ensuring every product is beautiful and user-friendly.",
   },
 ];
@@ -56,6 +56,7 @@ export default function TeamPage() {
                   width={112}
                   height={112}
                   className="object-cover w-full h-full"
+                  style={{ objectPosition: 'top' }}
                   unoptimized
                 />
               </div>
