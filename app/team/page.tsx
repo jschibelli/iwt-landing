@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { Brain } from "lucide-react";
 
 const team = [
   {
@@ -48,21 +49,31 @@ export default function TeamPage() {
         <p className="text-lg text-teal-400 font-semibold text-center mb-12">The people behind IntraWeb Technologies</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {team.map((member) => (
-            <div key={member.name} className="bg-gray-800 rounded-xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-700 hover:scale-105 hover:shadow-2xl transition-transform">
-              <div className="w-28 h-28 mb-4 rounded-full overflow-hidden border-4 border-teal-500 bg-gray-700">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={112}
-                  height={112}
-                  className="object-cover w-full h-full"
-                  style={{ objectPosition: 'top' }}
-                  unoptimized
-                />
+            <div key={member.name} className="bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-700 relative overflow-visible">
+              <div className="relative w-40 h-40 mb-6 rounded-full overflow-visible flex items-center justify-center">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-teal-400 bg-gray-700">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={160}
+                    height={160}
+                    className="object-cover w-full h-full"
+                    style={{ objectPosition: 'top' }}
+                    unoptimized
+                  />
+                </div>
+                {member.name !== "John Schibelli" && (
+                  <span
+                    className="absolute bg-teal-700 border rounded-full p-1 flex items-center justify-center shadow-lg"
+                    style={{ right: '5px', bottom: 0, width: 44, height: 44, borderColor: '#2dd4bf', borderWidth: 1 }}
+                  >
+                    <Brain size={24} className="text-teal-300" stroke="#2dd4bf" strokeWidth={1} />
+                  </span>
+                )}
               </div>
-              <h3 className="text-2xl font-heading font-bold mb-1">{member.name}</h3>
-              <p className="text-teal-400 font-semibold mb-2">{member.title}</p>
-              <p className="text-gray-300 text-base font-body">{member.bio}</p>
+              <h3 className="text-3xl font-heading font-bold mb-1">{member.name}</h3>
+              <p className="text-teal-400 font-semibold text-xl mb-3">{member.title}</p>
+              <p className="text-gray-300 text-lg font-body">{member.bio}</p>
             </div>
           ))}
         </div>
