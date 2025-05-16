@@ -71,7 +71,7 @@ export default function ProcessPage() {
   });
   const polygonPointsStr = processCenters.map(([x, y]) => `${x},${y}`).join(' ');
 
-  function getEdgePoint(cx, cy, px, py, cardSize) {
+  function getEdgePoint(cx: number, cy: number, px: number, py: number, cardSize: number) {
     const dx = px - cx;
     const dy = py - cy;
     const half = cardSize / 2;
