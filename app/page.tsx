@@ -1,11 +1,12 @@
 import Hero from "../components/Hero";
 import Services from "../components/Services";
-import FeaturedWork from "../components/FeaturedWork";
+import FeaturedWorkSection from "../components/portfolio/FeaturedWorkSection";
 import Process from "../components/Process";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
 import SynaplyAI from "../components/SynaplyAI";
 import FAQ from "../components/FAQ";
+import projectsData from "@/data/projects.json";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         <Services />
       </section>
       <section id="work">
-        <FeaturedWork />
+        <FeaturedWorkSection projects={projectsData.projects.slice(0, 4)} />
       </section>
       <section id="process">
         <Process />

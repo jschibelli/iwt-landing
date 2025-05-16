@@ -1,0 +1,244 @@
+{
+  "projects": [
+    {
+      "id": "ecommerce-platform-2024",
+      "slug": "ecommerce-platform",
+      "name": "E-Commerce Platform Launch",
+      "industry": "Retail",
+      "keyMetric": "300% Revenue Growth",
+      "heroImage": "/images/projects/ecommerce-hero.jpg",
+      "gallery": [
+        "/images/projects/ecommerce-1.jpg",
+        "/images/projects/ecommerce-2.jpg",
+        "/images/projects/ecommerce-3.jpg"
+      ],
+      "summary": "A comprehensive e-commerce solution that transformed a traditional retail business into a digital-first operation, leveraging AI for inventory optimization and personalized shopping experiences.",
+      "problem": "The client faced challenges with inventory management, customer engagement, and scaling their operations. Their existing system couldn't handle the growing demand and lacked modern features.",
+      "solution": "We developed a full-stack Next.js application with real-time inventory tracking, AI-powered product recommendations, and a seamless checkout experience. The solution integrated with their existing systems while providing new capabilities.",
+      "processSteps": [
+        {
+          "title": "Discovery",
+          "description": "Conducted stakeholder interviews and market research to define requirements and success metrics.",
+          "duration": "2 weeks"
+        },
+        {
+          "title": "Design",
+          "description": "Delivered interactive Figma prototypes and iterated based on client feedback.",
+          "duration": "3 weeks"
+        },
+        {
+          "title": "Development",
+          "description": "Built a full-stack Next.js app with real-time inventory and secure checkout.",
+          "duration": "8 weeks"
+        },
+        {
+          "title": "Launch",
+          "description": "Deployed to scalable cloud infrastructure with zero downtime.",
+          "duration": "1 week"
+        },
+        {
+          "title": "Support",
+          "description": "Provided ongoing monitoring, feature updates, and analytics reporting.",
+          "duration": "Ongoing"
+        }
+      ],
+      "results": {
+        "metrics": [
+          {
+            "label": "Revenue Growth",
+            "value": "300%",
+            "description": "Year-over-year increase"
+          },
+          {
+            "label": "Conversion Rate",
+            "value": "4.2%",
+            "description": "Up from 1.8%"
+          },
+          {
+            "label": "Customer Satisfaction",
+            "value": "4.8/5",
+            "description": "Based on post-purchase surveys"
+          }
+        ],
+        "visualizationData": {
+          "type": "line",
+          "labels": ["Q1", "Q2", "Q3", "Q4"],
+          "datasets": [
+            {
+              "label": "Revenue",
+              "data": [100, 150, 200, 300]
+            }
+          ]
+        }
+      },
+      "techStack": [
+        {
+          "name": "Next.js",
+          "icon": "nextjs",
+          "category": "Frontend"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript",
+          "category": "Language"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwind",
+          "category": "Styling"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "postgresql",
+          "category": "Database"
+        }
+      ],
+      "team": {
+        "human": [
+          {
+            "role": "Project Lead",
+            "name": "Sarah Chen"
+          },
+          {
+            "role": "Senior Developer",
+            "name": "Michael Rodriguez"
+          },
+          {
+            "role": "UX Designer",
+            "name": "Emma Thompson"
+          }
+        ],
+        "ai": [
+          {
+            "role": "Code Assistant",
+            "description": "Helped with boilerplate generation and code optimization"
+          },
+          {
+            "role": "Testing Assistant",
+            "description": "Automated test generation and quality checks"
+          }
+        ]
+      },
+      "client": {
+        "name": "RetailPlus Inc.",
+        "logo": "/images/clients/retailplus-logo.png",
+        "duration": "6 months"
+      },
+      "testimonial": {
+        "quote": "The team delivered a solution that exceeded our expectations. The AI-enhanced features have given us a significant competitive advantage.",
+        "author": "John Smith",
+        "position": "CTO",
+        "company": "RetailPlus Inc."
+      },
+      "aiContribution": {
+        "percentage": 35,
+        "description": "AI tools were used for code generation, testing, and optimization, accelerating development while maintaining high quality standards."
+      },
+      "navigation": {
+        "previousSlug": "healthcare-app",
+        "nextSlug": "fintech-dashboard"
+      },
+      "tags": ["e-commerce", "retail", "ai-enhanced", "nextjs", "typescript"]
+    },
+    {
+      "id": "healthcare-app-2024",
+      "slug": "healthcare-app",
+      "name": "Healthcare Appointment Platform",
+      "industry": "Healthcare",
+      "keyMetric": "2x Patient Retention",
+      "heroImage": "/images/projects/placeholder.jpg",
+      "gallery": ["/images/projects/placeholder.jpg"],
+      "summary": "A HIPAA-compliant platform for booking and managing appointments, with AI-driven reminders and analytics.",
+      "problem": "Manual scheduling led to missed appointments and inefficiency.",
+      "solution": "Automated scheduling, reminders, and analytics dashboard.",
+      "processSteps": [
+        {"title": "Discovery", "description": "Stakeholder interviews and workflow mapping.", "duration": "1 week"},
+        {"title": "Design", "description": "Wireframes and user testing.", "duration": "2 weeks"},
+        {"title": "Development", "description": "React Native app and secure backend.", "duration": "6 weeks"},
+        {"title": "Launch", "description": "App Store and Play Store deployment.", "duration": "1 week"},
+        {"title": "Support", "description": "Ongoing updates and support.", "duration": "Ongoing"}
+      ],
+      "results": {
+        "metrics": [
+          {"label": "Patient Retention", "value": "2x", "description": "Doubled in 6 months"},
+          {"label": "No-Shows Reduced", "value": "-60%", "description": "AI reminders"},
+          {"label": "Satisfaction", "value": "4.9/5", "description": "App store reviews"}
+        ],
+        "visualizationData": {
+          "type": "line",
+          "labels": ["Q1", "Q2", "Q3", "Q4"],
+          "datasets": [{"label": "Retention", "data": [50, 70, 90, 100]}]
+        }
+      },
+      "techStack": [
+        {"name": "React Native", "icon": "react", "category": "Frontend"},
+        {"name": "Node.js", "icon": "nodejs", "category": "Backend"},
+        {"name": "AWS", "icon": "aws", "category": "Cloud"}
+      ],
+      "team": {
+        "human": [
+          {"role": "Product Manager", "name": "Alex Reyes"},
+          {"role": "Lead Developer", "name": "Nico Alvarez"}
+        ],
+        "ai": [
+          {"role": "Scheduling Assistant", "description": "Automated reminders and analytics"}
+        ]
+      },
+      "client": {"name": "HealthFirst", "logo": "/images/clients/placeholder.png", "duration": "4 months"},
+      "testimonial": {"quote": "The platform transformed our patient experience.", "author": "Dr. Lee", "position": "CMO", "company": "HealthFirst"},
+      "aiContribution": {"percentage": 25, "description": "AI for reminders and analytics."},
+      "navigation": {"previousSlug": "fintech-dashboard", "nextSlug": "ecommerce-platform"},
+      "tags": ["healthcare", "mobile", "ai", "react-native"]
+    },
+    {
+      "id": "fintech-dashboard-2024",
+      "slug": "fintech-dashboard",
+      "name": "Fintech Analytics Dashboard",
+      "industry": "Finance",
+      "keyMetric": "+120% Data Insights",
+      "heroImage": "/images/projects/placeholder.jpg",
+      "gallery": ["/images/projects/placeholder.jpg"],
+      "summary": "A real-time dashboard for financial analytics, with AI-powered anomaly detection and reporting.",
+      "problem": "Manual data analysis was slow and error-prone.",
+      "solution": "Automated data pipelines and AI-driven insights.",
+      "processSteps": [
+        {"title": "Discovery", "description": "Requirements and data mapping.", "duration": "1 week"},
+        {"title": "Design", "description": "Dashboard wireframes.", "duration": "1 week"},
+        {"title": "Development", "description": "Data pipeline and dashboard.", "duration": "5 weeks"},
+        {"title": "Launch", "description": "Internal rollout.", "duration": "1 week"},
+        {"title": "Support", "description": "Continuous improvement.", "duration": "Ongoing"}
+      ],
+      "results": {
+        "metrics": [
+          {"label": "Data Insights", "value": "+120%", "description": "Year-over-year"},
+          {"label": "Manual Reports", "value": "-80%", "description": "Automated"},
+          {"label": "User Satisfaction", "value": "4.7/5", "description": "Internal survey"}
+        ],
+        "visualizationData": {
+          "type": "line",
+          "labels": ["Q1", "Q2", "Q3", "Q4"],
+          "datasets": [{"label": "Insights", "data": [20, 40, 60, 120]}]
+        }
+      },
+      "techStack": [
+        {"name": "Next.js", "icon": "nextjs", "category": "Frontend"},
+        {"name": "Python", "icon": "python", "category": "Language"},
+        {"name": "GCP", "icon": "gcp", "category": "Cloud"}
+      ],
+      "team": {
+        "human": [
+          {"role": "Data Lead", "name": "Eli Noor"},
+          {"role": "UI Designer", "name": "Sophie Tran"}
+        ],
+        "ai": [
+          {"role": "Anomaly Detector", "description": "Flagged outliers in real time"}
+        ]
+      },
+      "client": {"name": "FinSight", "logo": "/images/clients/placeholder.png", "duration": "3 months"},
+      "testimonial": {"quote": "We now spot issues instantly and make better decisions.", "author": "M. Patel", "position": "CFO", "company": "FinSight"},
+      "aiContribution": {"percentage": 30, "description": "AI for anomaly detection."},
+      "navigation": {"previousSlug": "ecommerce-platform", "nextSlug": "healthcare-app"},
+      "tags": ["fintech", "dashboard", "ai", "nextjs"]
+    }
+  ]
+} 
