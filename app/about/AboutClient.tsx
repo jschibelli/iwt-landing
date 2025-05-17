@@ -8,11 +8,38 @@ export default function AboutClient() {
     <main className="bg-[#0a2236] min-h-screen text-white">
       {/* Hero Section */}
       <section className="py-20 relative bg-[#0a2236] overflow-hidden">
-        <div className="absolute inset-0 z-0 pointer-events-none select-none" style={{ backgroundImage: 'url(/pentagon-pattern.svg)', backgroundRepeat: 'repeat', backgroundSize: '80px 80px', opacity: 0.18 }} />
+        {/* More visible SVG + teal overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <div
+            style={{
+              backgroundImage: 'url(/pentagon-pattern.svg)',
+              backgroundRepeat: 'repeat',
+              backgroundSize: '80px 80px',
+              opacity: 0.6,
+              filter: 'contrast(2)'
+            }}
+            className="w-full h-full absolute inset-0"
+          />
+          <div className="w-full h-full absolute inset-0 bg-teal-500/20" />
+        </div>
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-5xl md:text-6xl font-bold mb-4 text-teal-400">About IntraWeb Technologies</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="text-xl md:text-2xl max-w-3xl text-teal-100">
-            We build high-performance web solutions that blend innovative design with rock-solid technology—delivering digital experiences that drive real business impact.
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-5xl md:text-6xl font-bold mb-4 text-teal-400 text-left md:text-center"
+          >
+            About IntraWeb Technologies
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl md:text-2xl max-w-3xl text-teal-100 text-left md:text-center mx-auto"
+          >
+            We build high-performance web solutions that blend innovative design with rock-solid technology. Delivering digital experiences that drive real business impact.
           </motion.p>
         </div>
       </section>

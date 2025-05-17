@@ -20,8 +20,11 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="bg-gray-900 py-16 md:py-24">
+      <div className="max-w-3xl mx-auto px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-teal-400 text-left md:text-center">Frequently Asked Questions</h2>
+        <p className="text-lg md:text-2xl font-body mb-6 text-teal-100 text-left md:text-center">Find answers to common questions about our services, process, and more.</p>
+      </div>
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-10 text-white">Frequently Asked Questions</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {faqs.map((faq, i) => (
             <div key={i} className="bg-gray-800 rounded-lg shadow p-6 border border-gray-700">

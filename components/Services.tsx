@@ -29,7 +29,8 @@ export default function Services() {
   return (
     <section id="services" className="bg-[#111827] text-white py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-10">Our Services</h2>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-teal-400 text-left md:text-center">Our Services</h2>
+        <p className="text-lg md:text-xl text-teal-100 text-left md:text-center mb-6">Comprehensive technology solutions to drive your business forward</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {services.map((service, i) => {
             const Icon = iconMap[service.icon];
@@ -46,7 +47,7 @@ export default function Services() {
                 <span className="mb-4 p-4 rounded-full bg-[#111827] text-teal-400 border-2 border-teal-500 group-hover:bg-teal-500 group-hover:text-white transition-colors">
                   <Icon size={40} />
                 </span>
-                <h3 className="text-xl font-heading font-semibold mb-2 text-white">{service.title}</h3>
+                <h3 className="text-xl font-heading font-semibold mb-2 text-white text-left md:text-center">{service.title}</h3>
                 <p className="text-base font-body text-gray-300 mb-0">{service.description}</p>
               </motion.div>
             );

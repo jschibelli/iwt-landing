@@ -61,8 +61,8 @@ export default function ProcessPage() {
     <main className="bg-gray-900 text-white min-h-screen">
       <section className="py-16 md:py-24 bg-gradient-to-br from-teal-500 via-blue-500 to-indigo-600 text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">Our Process</h1>
-          <p className="text-lg md:text-2xl font-body mb-6 text-white/90">How we deliver results for our clients, step by step.</p>
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4 text-teal-400 text-left md:text-center">Our Process</h1>
+          <p className="text-lg md:text-2xl font-body mb-6 text-teal-100 text-left md:text-center">Find answers to common questions about our services, process, and more.</p>
         </div>
       </section>
       <section className="py-8 md:py-16 relative overflow-visible">
@@ -143,7 +143,7 @@ export default function ProcessPage() {
       </section>
       <section className="py-12 md:py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Why Our Process Works</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-white text-left md:text-center">Why Our Process Works</h2>
           <ul className="grid gap-5 md:grid-cols-2 text-left max-w-2xl mx-auto mb-8">
             {benefits.map((b, i) => (
               <li key={i} className="flex items-start gap-4 text-gray-200">
@@ -156,7 +156,7 @@ export default function ProcessPage() {
       </section>
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Process in Action: E-Commerce Platform Launch</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white text-left md:text-center">Process in Action: E-Commerce Platform Launch</h2>
           <p className="text-lg text-gray-300 mb-8">See how our process helped a client launch a scalable e-commerce platform, from initial discovery to post-launch support.</p>
           <div className="bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-700 text-left">
             <ol className="list-decimal list-inside space-y-3 text-gray-200">
