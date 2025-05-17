@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "heading": "Our Services",
+    "subheading": "Comprehensive technology solutions to drive your business forward",
+    "description": "We offer end-to-end technology services, from custom web applications to AI solutions, helping businesses innovate and scale efficiently."
+  },
+  "services": [
+    {
+      "title": "Web App Development",
+      "description": "Custom web applications built with modern technologies to meet your specific business needs.",
+      "icon": "Code",
+      "features": [
+        "Full-stack development with Next.js, React, and Node.js",
+        "Progressive Web Apps (PWA) for enhanced mobile experience",
+        "Real-time features with WebSocket integration",
+        "API development and third-party integrations",
+        "Database design and optimization",
+        "Performance optimization and SEO best practices"
+      ],
+      "caseStudies": [
+        {
+          "title": "E-Commerce Platform",
+          "description": "A scalable online store with real-time inventory management",
+          "image": "https://picsum.photos/seed/ecommerce/600/400",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "User-centered design solutions that create engaging and intuitive digital experiences.",
+      "icon": "Palette",
+      "features": [
+        "User research and persona development",
+        "Wireframing and prototyping",
+        "Visual design and branding",
+        "Responsive design implementation",
+        "Usability testing and optimization",
+        "Design system creation"
+      ],
+      "caseStudies": [
+        {
+          "title": "SaaS Dashboard",
+          "description": "Analytics dashboard with intuitive user interface",
+          "image": "https://picsum.photos/seed/saas/600/400",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "title": "Cloud & DevOps",
+      "description": "Scalable cloud infrastructure and streamlined development operations.",
+      "icon": "Cloud",
+      "features": [
+        "Cloud architecture design (AWS, Azure, GCP)",
+        "Containerization with Docker and Kubernetes",
+        "CI/CD pipeline implementation",
+        "Infrastructure as Code (IaC)",
+        "Monitoring and logging solutions",
+        "Security and compliance implementation"
+      ],
+      "caseStudies": [
+        {
+          "title": "Cloud Migration",
+          "description": "Seamless migration to cloud infrastructure",
+          "image": "https://picsum.photos/seed/cloud/600/400",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "title": "AI Solutions",
+      "description": "Intelligent solutions powered by cutting-edge artificial intelligence.",
+      "icon": "Sparkles",
+      "features": [
+        "Custom AI model development",
+        "Natural Language Processing (NLP)",
+        "Computer Vision solutions",
+        "Machine Learning integration",
+        "AI-powered automation",
+        "Data analysis and insights"
+      ],
+      "caseStudies": [
+        {
+          "title": "AI-Powered Analytics",
+          "description": "Advanced analytics platform with AI insights",
+          "image": "https://picsum.photos/seed/ai/600/400",
+          "link": "#"
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "heading": "Ready to Transform Your Business?",
+    "description": "Let's discuss how our services can help you achieve your goals.",
+    "button": {
+      "label": "Get in Touch",
+      "href": "/contact"
+    }
+  }
+} 

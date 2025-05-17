@@ -1,0 +1,13 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.13">
+    <!-- Outer pentagon -->
+    <polygon points="40,10 70,30 58,66 22,66 10,30" stroke="#15b8a1" stroke-width="2" fill="none"/>
+    <!-- Connect pentagons horizontally -->
+    <line x1="70" y1="30" x2="80" y2="40" stroke="#15b8a1" stroke-width="2"/>
+    <line x1="58" y1="66" x2="80" y2="80" stroke="#15b8a1" stroke-width="2"/>
+    <line x1="22" y1="66" x2="0" y2="80" stroke="#15b8a1" stroke-width="2"/>
+    <line x1="10" y1="30" x2="0" y2="40" stroke="#15b8a1" stroke-width="2"/>
+    <!-- Connect pentagons vertically -->
+    <line x1="40" y1="10" x2="40" y2="0" stroke="#15b8a1" stroke-width="2"/>
+  </g>
+</svg> 
