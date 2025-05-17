@@ -43,41 +43,41 @@ const NotFoundPage: React.FC = () => {
       </Head>
       
       <main 
-        className="min-h-screen bg-white dark:bg-charcoal-900 text-charcoal dark:text-gray-100 flex flex-col items-center justify-center px-6 py-16 text-center" 
+        className="min-h-screen bg-white dark:bg-charcoal-900 text-charcoal dark:text-gray-100 flex flex-col items-center justify-center px-4 py-12 md:py-20 text-center" 
         role="main" 
         aria-labelledby="404-heading"
       >
-        <div className="max-w-md">
+        <div className="w-full max-w-lg mx-auto flex flex-col items-center">
           <h1 
             id="404-heading"
             ref={headingRef}
-            className="text-5xl md:text-7xl font-bold text-purple dark:text-purple-light mb-4"
+            className="text-6xl md:text-8xl font-extrabold text-purple dark:text-purple-light mb-2 tracking-tight focus:outline-none"
             tabIndex={-1}
           >
             404
           </h1>
-          <p className="text-xl font-semibold mb-2">Page Not Found</p>
-          <p className="text-base md:text-sm text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-2xl md:text-3xl font-semibold mb-2">Page Not Found</p>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto">
             We couldn't find the page you were looking for. It might have been moved or deleted.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center mb-8">
             <Link 
               href="/" 
-              className="px-5 py-3 rounded-md bg-orange text-white hover:bg-orange-dark transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange dark:focus:ring-offset-charcoal-900"
+              className="px-6 py-3 rounded-lg bg-orange text-white font-semibold shadow hover:bg-orange-dark transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange dark:focus:ring-offset-charcoal-900"
             >
               Go to Homepage
             </Link>
             <Link 
               href="/contact" 
-              className="px-5 py-3 rounded-md border border-purple text-purple dark:text-purple-light dark:border-purple-light hover:bg-purple-light dark:hover:bg-purple-dark/20 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple dark:focus:ring-offset-charcoal-900"
+              className="px-6 py-3 rounded-lg border-2 border-purple text-purple dark:text-purple-light dark:border-purple-light font-semibold hover:bg-purple-light/10 dark:hover:bg-purple-dark/20 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple dark:focus:ring-offset-charcoal-900"
             >
               Contact Support
             </Link>
           </div>
         </div>
 
-        <div className="mt-12 max-w-[400px] w-full">
+        <div className="mt-8 md:mt-12 max-w-[400px] w-full mx-auto">
           <Animated404Visual />
         </div>
       </main>
