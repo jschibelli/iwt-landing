@@ -48,7 +48,7 @@ export function Footer() {
               <Link href="/work" className="hover:text-orange-500">Work</Link>
               <Link href="/process" className="hover:text-orange-500">Process</Link>
               <Link href="/about" className="hover:text-orange-500">About</Link>
-              <Link href="/blog" className="hover:text-orange-500">Blog</Link>
+              <Link href="/team" className="hover:text-orange-500">Team</Link>
               <Link href="/careers" className="hover:text-orange-500">Careers</Link>
             </nav>
           </div>
