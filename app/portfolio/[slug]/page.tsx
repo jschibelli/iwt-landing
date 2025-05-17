@@ -35,9 +35,9 @@ export default async function Page({
   }
 
   return (
-    <main className="bg-[#f8fafc] min-h-screen">
+    <main className="bg-[#0a2236] min-h-screen">
       {/* Hero Section with pentagon pattern and navy background */}
-      <section className="relative py-24 md:py-32 bg-[#0a2236] overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-[#0a2236] overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none select-none" style={{ backgroundImage: 'url(/pentagon-pattern.svg)', backgroundRepeat: 'repeat', backgroundSize: '80px 80px', opacity: 0.18 }} />
         <div className="relative z-10 max-w-6xl mx-auto px-4 flex flex-col items-center">
           <div className="flex items-center gap-4 mb-6">
@@ -92,37 +92,33 @@ export default async function Page({
         </div>
       </section>
       {/* Main Content Sections */}
-      <div className="pb-8">
-        {/* Problem/Solution - light gray */}
-        <section className="bg-[#f3f6fa] py-20">
+      <div className="pb-4">
+        {/* Problem/Solution - alt navy */}
+        <section className="bg-[#13293d] py-10">
           <ProblemSolution project={project} />
         </section>
-        {/* Process Timeline - white */}
-        <section className="bg-white py-20">
+        {/* Process Timeline - navy */}
+        <section className="bg-[#0a2236] py-10">
           <ProcessTimeline project={project} />
         </section>
-        {/* Results - light gray */}
-        <section className="bg-[#f3f6fa] py-20">
+        {/* Results - gradient */}
+        <section className="bg-gradient-to-b from-[#0a2236] to-[#13293d] py-10">
           <ResultsHighlights project={project} />
         </section>
-        {/* Tech Stack - white */}
-        <section className="bg-white py-20">
+        {/* Tech Stack - deep gray/teal */}
+        <section className="bg-[#1a2e3b] py-10">
           <TechStackIcons project={project} />
         </section>
-        {/* Team - light gray */}
-        <section className="bg-[#f3f6fa] py-20">
+        {/* Team - navy */}
+        <section className="bg-[#0a2236] py-10">
           <TeamComposition project={project} />
         </section>
         {/* Testimonial - teal gradient */}
-        <section className="bg-gradient-to-br from-teal-500 to-teal-600 py-20">
+        <section className="bg-gradient-to-br from-teal-500 to-teal-600 py-10">
           <ClientTestimonial project={project} />
         </section>
-        {/* CTA - navy */}
-        <section className="bg-[#0a2236] py-20">
-          <ContactCTA />
-        </section>
-        {/* Navigation - sticky, white */}
-        <div className="sticky bottom-0 z-20 bg-gradient-to-t from-white via-white/90 to-white/0 pt-4">
+        {/* Navigation - sticky, navy */}
+        <div className="sticky bottom-0 z-20 bg-gradient-to-t from-[#0a2236] via-[#0a2236]/90 to-[#0a2236]/0 pt-2">
           <NavPrevNext project={project} />
         </div>
       </div>

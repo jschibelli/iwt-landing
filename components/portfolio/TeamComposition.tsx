@@ -10,13 +10,13 @@ interface TeamCompositionProps {
 
 export default function TeamComposition({ project }: TeamCompositionProps) {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Team Composition
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-100 max-w-2xl mx-auto">
             Our hybrid human+AI approach combines the best of both worlds
           </p>
         </div>
@@ -28,13 +28,13 @@ export default function TeamComposition({ project }: TeamCompositionProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className="bg-gray-900 rounded-2xl p-8 shadow-lg"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
-                <User className="w-6 h-6 text-teal-600" />
+              <div className="w-12 h-12 rounded-full bg-teal-900 flex items-center justify-center">
+                <User className="w-6 h-6 text-teal-400" />
               </div>
-              <h3 className="text-2xl font-heading font-bold text-gray-900">
+              <h3 className="text-2xl font-heading font-bold text-white">
                 Human Team
               </h3>
             </div>
@@ -42,16 +42,16 @@ export default function TeamComposition({ project }: TeamCompositionProps) {
               {project.team.human.map((member) => (
                 <div
                   key={member.name}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg"
+                  className="flex items-center gap-4 p-4 bg-gray-800 rounded-lg"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-gray-600 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
+                    <span className="text-teal-200 font-medium">
                       {member.name.charAt(0)}
                     </span>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{member.name}</p>
-                    <p className="text-sm text-gray-500">{member.role}</p>
+                    <p className="font-medium text-white">{member.name}</p>
+                    <p className="text-sm text-teal-400">{member.role}</p>
                   </div>
                 </div>
               ))}
@@ -64,13 +64,13 @@ export default function TeamComposition({ project }: TeamCompositionProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className="bg-gray-900 rounded-2xl p-8 shadow-lg"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
-                <Cpu className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 rounded-full bg-indigo-900 flex items-center justify-center">
+                <Cpu className="w-6 h-6 text-indigo-400" />
               </div>
-              <h3 className="text-2xl font-heading font-bold text-gray-900">
+              <h3 className="text-2xl font-heading font-bold text-white">
                 AI Assistants
               </h3>
             </div>
@@ -78,17 +78,17 @@ export default function TeamComposition({ project }: TeamCompositionProps) {
               {project.team.ai.map((member, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-indigo-50 rounded-lg border border-indigo-100"
+                  className="p-4 bg-indigo-950 rounded-lg border border-indigo-900"
                 >
-                  <p className="font-medium text-indigo-900 mb-1">
+                  <p className="font-medium text-indigo-100 mb-1">
                     {member.role}
                   </p>
-                  <p className="text-sm text-indigo-700">{member.description}</p>
+                  <p className="text-sm text-indigo-400">{member.description}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-indigo-600/10 rounded-lg">
-              <p className="text-sm text-indigo-900">
+            <div className="mt-6 p-4 bg-indigo-600/20 rounded-lg">
+              <p className="text-sm text-indigo-100">
                 <span className="font-medium">AI Contribution:</span>{" "}
                 {project.aiContribution.percentage}% of the project
               </p>

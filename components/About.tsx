@@ -54,7 +54,7 @@ export default function About() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/team"
-            className="px-8 py-3 rounded font-semibold text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 bg-orange-500 text-white hover:bg-teal-500"
+            className="px-8 py-3 rounded-md bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
             Meet Our Team
           </Link>

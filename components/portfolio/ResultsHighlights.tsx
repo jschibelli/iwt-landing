@@ -67,13 +67,13 @@ export default function ResultsHighlights({ project }: ResultsHighlightsProps) {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Results & Impact
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-100 max-w-2xl mx-auto">
             Key metrics and outcomes that demonstrate the project's success
           </p>
         </div>
@@ -87,15 +87,15 @@ export default function ResultsHighlights({ project }: ResultsHighlightsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center"
+              className="bg-gray-900 rounded-2xl p-8 shadow-lg text-center"
             >
-              <h3 className="text-4xl font-bold text-teal-600 mb-2">
+              <h3 className="text-4xl font-bold text-teal-400 mb-2">
                 {metric.value}
               </h3>
-              <p className="text-lg font-medium text-gray-900 mb-2">
+              <p className="text-lg font-medium text-white mb-2">
                 {metric.label}
               </p>
-              <p className="text-sm text-gray-500">{metric.description}</p>
+              <p className="text-sm text-teal-200">{metric.description}</p>
             </motion.div>
           ))}
         </div>
@@ -106,12 +106,12 @@ export default function ResultsHighlights({ project }: ResultsHighlightsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-white rounded-2xl p-8 shadow-lg"
+          className="bg-gray-900 rounded-2xl p-8 shadow-lg"
         >
-          <h3 className="text-xl font-heading font-bold text-gray-900 mb-6">
+          <h3 className="text-xl font-heading font-bold text-white mb-6">
             Growth Trajectory
           </h3>
-          <div className="h-[300px]">
+          <div className="w-full h-[220px] md:w-[calc(100%+4rem)] md:-m-8 md:h-[300px]">
             <Line data={chartData} options={chartOptions} />
           </div>
         </motion.div>

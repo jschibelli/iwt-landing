@@ -16,7 +16,7 @@ export default function Home() {
         <Services />
       </section>
       <section id="work">
-        <FeaturedWorkSection projects={projectsData.projects.slice(0, 4)} />
+        <FeaturedWorkSection />
       </section>
       <section id="process">
         <Process />

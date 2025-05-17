@@ -165,17 +165,10 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={isSubmitting}
         className="w-full px-6 py-3 rounded-md bg-orange-500 text-white font-semibold hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled={isSubmitting}
       >
-        {isSubmitting ? (
-          <span className="flex items-center justify-center gap-2">
-            <Loader2 className="w-5 h-5 animate-spin" />
-            Sending...
-          </span>
-        ) : (
-          "Send Message"
-        )}
+        {isSubmitting ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

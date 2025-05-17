@@ -19,13 +19,13 @@ export default function TechStackIcons({ project }: TechStackIconsProps) {
   }, {} as Record<string, typeof project.techStack>);
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Technology Stack
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-100 max-w-2xl mx-auto">
             The tools and technologies that power this solution
           </p>
         </div>
@@ -38,9 +38,9 @@ export default function TechStackIcons({ project }: TechStackIconsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-lg"
+              className="bg-gray-900 rounded-2xl p-6 shadow-lg"
             >
-              <h3 className="text-lg font-heading font-bold text-gray-900 mb-4">
+              <h3 className="text-lg font-heading font-bold text-white mb-4">
                 {category}
               </h3>
               <div className="grid grid-cols-2 gap-4">
@@ -49,7 +49,7 @@ export default function TechStackIcons({ project }: TechStackIconsProps) {
                     key={tech.name}
                     className="flex flex-col items-center text-center"
                   >
-                    <div className="w-12 h-12 mb-2 relative">
+                    <div className="w-12 h-12 mb-2 relative bg-gray-800 rounded-full flex items-center justify-center">
                       <Image
                         src={`/images/tech/${tech.icon}.svg`}
                         alt={tech.name}
@@ -57,7 +57,7 @@ export default function TechStackIcons({ project }: TechStackIconsProps) {
                         className="object-contain"
                       />
                     </div>
-                    <span className="text-sm text-gray-600">{tech.name}</span>
+                    <span className="text-sm text-teal-200">{tech.name}</span>
                   </div>
                 ))}
               </div>

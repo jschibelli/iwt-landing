@@ -9,7 +9,7 @@ interface ProblemSolutionProps {
 
 export default function ProblemSolution({ project }: ProblemSolutionProps) {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Problem */}
@@ -19,11 +19,11 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-gray-900 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-orange-900 flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-red-600"
+                    className="w-6 h-6 text-orange-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -36,11 +36,11 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-heading font-bold text-gray-900">
+                <h2 className="text-2xl font-heading font-bold text-white">
                   The Challenge
                 </h2>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-teal-100 leading-relaxed">
                 {project.problem}
               </p>
             </div>
@@ -53,11 +53,11 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-gray-900 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-teal-900 flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-teal-600"
+                    className="w-6 h-6 text-teal-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -70,11 +70,11 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-heading font-bold text-gray-900">
+                <h2 className="text-2xl font-heading font-bold text-white">
                   Our Solution
                 </h2>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-teal-100 leading-relaxed">
                 {project.solution}
               </p>
             </div>

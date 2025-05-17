@@ -55,7 +55,7 @@ export default function Services() {
         <div className="flex justify-center">
           <Link
             href="/services"
-            className="px-8 py-3 rounded border-2 border-orange-500 bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            className="px-8 py-3 rounded-md bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
             Explore Our Services
           </Link>
