@@ -6,12 +6,12 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#work" },
-  { name: "Process", href: "#process" },
-  { name: "About", href: "#about" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/portfolio" },
+  { name: "Process", href: "/process" },
+  { name: "About", href: "/about" },
+  { name: "Testimonials", href: "/testimonials" },
+  { name: "FAQ", href: "/faq" },
 ];
 
 export default function Navbar() {
@@ -83,22 +83,12 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8 font-body">
           {navLinks.map((link) => (
             <li key={link.name}>
-              {isHome ? (
-                <a
-                  href={link.href}
-                  onClick={e => handleSmoothScroll(e, link.href)}
-                  className={`hover:text-teal-400 transition-colors cursor-pointer ${activeSection === link.name ? "text-teal-400 font-semibold" : ""}`}
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link
-                  href={link.href.startsWith("#") ? `/${link.href}` : link.href}
-                  className={`hover:text-teal-400 transition-colors ${pathname === link.href || pathname === `/${link.href}` ? "text-teal-400 font-semibold" : ""}`}
-                >
-                  {link.name}
-                </Link>
-              )}
+              <Link
+                href={link.href}
+                className={`hover:text-teal-400 transition-colors ${pathname === link.href ? "text-teal-400 font-semibold" : ""}`}
+              >
+                {link.name}
+              </Link>
             </li>
           ))}
           <li>
@@ -122,23 +112,13 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4 font-body">
             {navLinks.map((link) => (
               <li key={link.name}>
-                {isHome ? (
-                  <a
-                    href={link.href}
-                    onClick={e => handleSmoothScroll(e, link.href)}
-                    className={`block py-2 px-2 rounded hover:bg-teal-500 hover:text-white transition-colors cursor-pointer ${activeSection === link.name ? "text-teal-400 font-semibold" : ""}`}
-                  >
-                    {link.name}
-                  </a>
-                ) : (
-                  <Link
-                    href={link.href.startsWith("#") ? `/${link.href}` : link.href}
-                    className={`block py-2 px-2 rounded hover:bg-teal-500 hover:text-white transition-colors ${pathname === link.href || pathname === `/${link.href}` ? "text-teal-400 font-semibold" : ""}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                )}
+                <Link
+                  href={link.href}
+                  className={`block py-2 px-2 rounded hover:bg-teal-500 hover:text-white transition-colors ${pathname === link.href ? "text-teal-400 font-semibold" : ""}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
               </li>
             ))}
             <li>

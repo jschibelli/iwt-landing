@@ -80,10 +80,10 @@ export default function Footer() {
       {/* Legal */}
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center mt-6 text-sm text-gray-500">
         <div>&copy; {new Date().getFullYear()} IntraWeb Technologies. All rights reserved.</div>
-        <div className="flex gap-4 mt-2 md:mt-0">
-          <Link href="/privacy" className="hover:text-teal-400">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-teal-400">Terms of Service</Link>
-        </div>
+      </div>
+      <div className="flex flex-wrap gap-6 justify-center mt-4">
+        <Link href="/privacy-policy" className="text-teal-400 hover:text-orange-400 transition-colors underline">Privacy Policy</Link>
+        <Link href="/terms-of-service" className="text-teal-400 hover:text-orange-400 transition-colors underline">Terms of Service</Link>
       </div>
     </footer>
   );

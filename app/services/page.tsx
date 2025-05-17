@@ -70,6 +70,15 @@ export default function ServicesPage() {
       {/* Services Sections */}
       {data.services.map((service, index) => {
         const Icon = iconMap[service.icon];
+        // Map service case study title to project slug
+        let caseStudySlug = "#";
+        if (service.caseStudies[0]) {
+          const title = service.caseStudies[0].title.toLowerCase();
+          if (title.includes("e-commerce")) caseStudySlug = "ecommerce-platform";
+          else if (title.includes("saas")) caseStudySlug = "healthcare-app";
+          else if (title.includes("cloud")) caseStudySlug = "fintech-dashboard";
+          else if (title.includes("ai")) caseStudySlug = "fintech-dashboard";
+        }
         return (
           <section key={service.title} className={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-900'}`}>
             <div className="max-w-5xl mx-auto px-4">
@@ -105,7 +114,7 @@ export default function ServicesPage() {
                         <h3 className="text-xl font-semibold mb-2">{service.caseStudies[0].title}</h3>
                         <p className="text-gray-300 mb-4">{service.caseStudies[0].description}</p>
                         <Link
-                          href={service.caseStudies[0].link}
+                          href={caseStudySlug !== "#" ? `/portfolio/${caseStudySlug}` : "#"}
                           className="inline-block px-4 py-2 rounded bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
                         >
                           View Case Study
