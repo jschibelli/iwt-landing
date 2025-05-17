@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import Image from 'next/image';
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -73,11 +74,8 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 text-lg font-heading font-bold">
           <span className="sr-only">IntraWeb Technologies</span>
           {/* Replace with SVG logo if available */}
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="16" fill="#2dd4bf" />
-            <text x="16" y="21" textAnchor="middle" fontSize="16" fill="#1e293b" fontFamily="Montserrat, Arial, sans-serif">IW</text>
-          </svg>
-          IntraWeb
+          
+            <Image src="/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" width={150} height={150} className="mr-4" />
         </Link>
         {/* Desktop Nav */}
         <ul className="hidden md:flex items-center gap-8 font-body">

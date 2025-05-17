@@ -1,8 +1,0 @@
-[
-  { "name": "React", "logo": "/globe.svg", "alt": "React Logo" },
-  { "name": "Next.js", "logo": "/next.svg", "alt": "Next.js Logo" },
-  { "name": "Node.js", "logo": "/file.svg", "alt": "Node.js Logo" },
-  { "name": "Tailwind CSS", "logo": "/window.svg", "alt": "Tailwind CSS Logo" },
-  { "name": "TypeScript", "logo": "/vercel.svg", "alt": "TypeScript Logo" },
-  { "name": "Vercel", "logo": "/vercel.svg", "alt": "Vercel Logo" }
-] 

@@ -1,89 +1,89 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Facebook } from "lucide-react";
 
-export default function Footer() {
+export function Footer() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Honeypot field
+    const honeypot = document.getElementById("honeypot") as HTMLInputElement;
+    if (honeypot && honeypot.value) return;
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setMessage("Thank you for subscribing!");
+      } else {
+        setMessage("Subscription failed. Please try again.");
+      }
+    } catch (error) {
+      setMessage("An error occurred. Please try again.");
+    }
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
-      {/* Blurred Circles Background */}
-      <div className="relative max-w-5xl mx-auto px-4 mb-10">
-        <div className="absolute inset-0 pointer-events-none select-none -z-10">
-          <div className="absolute -top-10 -left-10 w-48 h-48 bg-teal-500 opacity-60 rounded-full blur-2xl border-2 border-teal-700" />
-          <div className="absolute -bottom-10 -right-10 w-56 h-56 bg-orange-500 opacity-60 rounded-full blur-2xl border-2 border-orange-700" />
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-between bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-lg p-8 shadow-3xl border-2 border-teal-500 relative z-10 transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-2xl font-heading font-bold text-white mb-2">Ready to start your project?</h3>
-            <p className="text-gray-300">Let's build something amazing together.</p>
+    <footer className="w-full py-8 bg-gray-900 text-gray-200">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex flex-wrap justify-between">
+          {/* Column 1 */}
+          <div className="w-full md:w-1/4 mb-6 md:mb-0">
+            <img src="/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" className="mb-2 w-32 h-auto" />
+            <p className="text-sm">Innovate. Build. Empower.</p>
+            <p className="text-xs">We are committed to delivering innovative solutions that empower businesses worldwide.</p>
           </div>
-          <Link
-            href="/contact"
-            className="px-8 py-3 rounded bg-orange-500 text-white font-semibold text-lg hover:bg-teal-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </div>
-      {/* Footer Main */}
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Column 1: Logo & Social */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="inline-block w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center font-bold text-gray-900">IW</span>
-            <span className="font-heading font-bold text-white text-lg">IntraWeb</span>
+          {/* Column 2 */}
+          <div className="w-full md:w-1/4 mb-6 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+            <nav className="flex flex-col space-y-1">
+              <Link href="/services" className="hover:text-orange-500">Services</Link>
+              <Link href="/work" className="hover:text-orange-500">Work</Link>
+              <Link href="/process" className="hover:text-orange-500">Process</Link>
+              <Link href="/about" className="hover:text-orange-500">About</Link>
+              <Link href="/blog" className="hover:text-orange-500">Blog</Link>
+              <Link href="/careers" className="hover:text-orange-500">Careers</Link>
+            </nav>
           </div>
-          <div className="flex gap-3">
-            <a href="https://linkedin.com/company/intraweb-technologies" aria-label="LinkedIn" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
-            <a href="https://facebook.com/intrawebtech" aria-label="Facebook" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
-            <a href="https://www.threads.net/@intrawebtech" aria-label="Threads" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 50 50"><path d="M25 2C12.3 2 2 12.3 2 25s10.3 23 23 23 23-10.3 23-23S37.7 2 25 2zm0 44C13.5 46 4 36.5 4 25S13.5 4 25 4s21 9.5 21 21-9.5 21-21 21zm0-38c-9.4 0-17 7.6-17 17s7.6 17 17 17 17-7.6 17-17-7.6-17-17-17zm0 32c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15zm0-28c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13-5.8-13-13-13z"/></svg></a>
-            <a href="https://github.com/intrawebtech" aria-label="GitHub" className="hover:text-teal-400" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
+          {/* Column 3 */}
+          <div className="w-full md:w-1/4 mb-6 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">Contact</h3>
+            <p className="text-sm">Email: <a href="mailto:info@intrawebtech.com" className="hover:text-orange-500">info@intrawebtech.com</a></p>
+            <p className="text-sm">Phone: (555) 123-4567</p>
+            <p className="text-sm">Location: Towaco, NJ • Serving clients worldwide</p>
           </div>
-        </div>
-        {/* Column 2: Links */}
-        <div>
-          <h4 className="font-semibold text-white mb-2">Company</h4>
-          <ul className="space-y-1">
-            <li><Link href="/about" className="hover:text-teal-400">About</Link></li>
-            <li><Link href="/services" className="hover:text-teal-400">Services</Link></li>
-            <li><Link href="/portfolio" className="hover:text-teal-400">Portfolio</Link></li>
-            <li><Link href="/process" className="hover:text-teal-400">Process</Link></li>
-          </ul>
-        </div>
-        {/* Column 3: Resources */}
-        <div>
-          <h4 className="font-semibold text-white mb-2">Resources</h4>
-          <ul className="space-y-1">
-            <li><Link href="/team" className="hover:text-teal-400">Team</Link></li>
-            <li><Link href="/testimonials" className="hover:text-teal-400">Testimonials</Link></li>
-            <li><Link href="/faq" className="hover:text-teal-400">FAQ</Link></li>
-          </ul>
-        </div>
-        {/* Column 4: Newsletter */}
-        <div>
-          <h4 className="font-semibold text-white mb-2">Newsletter</h4>
-          <form className="flex flex-col gap-2">
-            <label htmlFor="newsletter" className="sr-only">Email address</label>
-            <div className="flex">
+          {/* Column 4 */}
+          <div className="w-full md:w-1/4">
+            <h3 className="text-lg font-semibold mb-2">Stay Connected</h3>
+            <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
               <input
-                id="newsletter"
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
-                className="w-full px-3 py-2 rounded-l bg-gray-700 text-white placeholder-gray-400 focus:outline-none"
+                className="p-2 rounded bg-gray-800 text-white"
+                required
               />
-              <button type="submit" className="px-4 py-2 rounded-r bg-orange-500 text-white font-semibold hover:bg-teal-500 transition-colors">
-                <Mail size={18} />
-              </button>
+              <input type="text" id="honeypot" className="hidden" />
+              <button type="submit" className="p-2 bg-orange-500 text-white rounded hover:bg-orange-600">Subscribe</button>
+              <div aria-live="polite" className="text-sm text-orange-500">{message}</div>
+            </form>
+            <div className="flex space-x-4 mt-4">
+              <a href="https://linkedin.com" aria-label="LinkedIn" className="hover:text-orange-500"><Linkedin /></a>
+              <a href="https://facebook.com" aria-label="Facebook" className="hover:text-orange-500"><Facebook /></a>
+              <a href="https://github.com" aria-label="GitHub" className="hover:text-orange-500"><Github /></a>
+              <a href="https://threads.net" aria-label="Threads" className="hover:text-orange-500"><Mail /></a>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-      {/* Legal */}
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center mt-6 text-sm text-gray-500">
-        <div>&copy; {new Date().getFullYear()} IntraWeb Technologies. All rights reserved.</div>
-      </div>
-      <div className="flex flex-wrap gap-6 justify-center mt-4">
-        <Link href="/privacy-policy" className="text-teal-400 hover:text-orange-400 transition-colors underline">Privacy Policy</Link>
-        <Link href="/terms-of-service" className="text-teal-400 hover:text-orange-400 transition-colors underline">Terms of Service</Link>
+        <div className="text-xs text-center mt-8">&copy; {new Date().getFullYear()} IntraWeb Technologies | <Link href="/privacy-policy" className="hover:text-orange-500">Privacy Policy</Link> | <Link href="/terms-of-service" className="hover:text-orange-500">Terms of Service</Link></div>
       </div>
     </footer>
   );
