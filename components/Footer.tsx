@@ -45,7 +45,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
             <nav className="flex flex-col space-y-1">
               <Link href="/services" className="hover:text-orange-500">Services</Link>
-              <Link href="/work" className="hover:text-orange-500">Work</Link>
+              {/* <Link href="/work" className="hover:text-orange-500">Work</Link> */}
               <Link href="/process" className="hover:text-orange-500">Process</Link>
               <Link href="/about" className="hover:text-orange-500">About</Link>
               <Link href="/team" className="hover:text-orange-500">Team</Link>
@@ -56,8 +56,8 @@ export function Footer() {
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <h3 className="text-lg font-semibold mb-2">Contact</h3>
             <p className="text-sm">Email: <a href="mailto:info@intrawebtech.com" className="hover:text-orange-500">info@intrawebtech.com</a></p>
-            <p className="text-sm">Phone: (555) 123-4567</p>
-            <p className="text-sm">Location: Towaco, NJ • Serving clients worldwide</p>
+            <p className="text-sm">Phone: (862) 207-9004</p>
+            <p className="text-sm">Location: Towaco, New Jersey</p>
           </div>
           {/* Column 4 */}
           <div className="w-full md:w-1/4">
