@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import Services from "../components/Services";
-import FeaturedWorkSection from "../components/portfolio/FeaturedWorkSection";
+import { StatsSection } from "../components/StatsSection";
 import Process from "../components/Process";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
@@ -15,8 +15,8 @@ export default function Home() {
       <section id="services">
         <Services />
       </section>
-      <section id="work">
-        <FeaturedWorkSection />
+      <section id="stats">
+        <StatsSection />
       </section>
       <section id="process">
         <Process />

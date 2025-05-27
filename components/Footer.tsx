@@ -31,7 +31,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full py-8 bg-gray-900 text-gray-200">
+    <footer className="w-full py-8 bg-gray-700 text-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           {/* Column 1 */}
