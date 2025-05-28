@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail, Linkedin, Github, Facebook } from "lucide-react";
+import Image from 'next/image';
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -37,7 +38,13 @@ export function Footer() {
         <div className="flex flex-col items-center space-y-6">
           {/* Logo and Tagline */}
           <div className="text-center">
-            <img src="/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" className="mx-auto mb-2 w-32 h-auto" />
+            <Image 
+              src="/intraweb-logo-white.png" 
+              alt="IntraWeb Technologies Logo" 
+              width={128} 
+              height={128} 
+              className="mx-auto mb-2 w-32 h-auto" 
+            />
             <p className="text-sm font-medium">Empowering Digital Innovation</p>
           </div>
 
@@ -126,7 +133,13 @@ export function Footer() {
           <div className="flex flex-wrap justify-between">
             {/* Column 1 */}
             <div className="w-full md:w-1/4 mb-6 md:mb-0">
-              <img src="/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" className="mb-2 w-32 h-auto" />
+              <Image 
+                src="/intraweb-logo-white.png" 
+                alt="IntraWeb Technologies Logo" 
+                width={128} 
+                height={128} 
+                className="mb-2 w-32 h-auto" 
+              />
               <p className="text-sm">Innovate. Build. Empower.</p>
               <p className="text-xs">We are committed to delivering innovative<br />solutions that empower businesses worldwide.</p>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 interface Testimonial {
   name: string;
@@ -25,9 +26,11 @@ export default function Testimonials() {
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((t, i) => (
             <div key={i} className="flex flex-col md:flex-row items-center bg-gray-800 rounded-lg p-8 shadow border border-gray-700">
-              <img
+              <Image
                 src={t.avatar}
                 alt={t.name}
+                width={64}
+                height={64}
                 className="w-16 h-16 rounded-full object-cover mb-4 md:mb-0 md:mr-6 border-2 border-teal-400"
                 loading="lazy"
               />

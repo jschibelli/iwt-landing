@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "../components/shared/navbar";
 import { Footer } from "../components/Footer";
 import { DeferredScripts } from "@/components/DeferredScripts";
-import { CSSLoader } from "@/components/CSSLoader";
+import { PerformanceMonitor } from "@/components/ui/PerformanceMonitor";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 const montserrat = Montserrat({ 
@@ -50,13 +50,13 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <CSSLoader />
       </head>
       <body className={inter.className}>
         <Navbar />
         {children}
         <Footer />
         <DeferredScripts />
+        <PerformanceMonitor />
       </body>
     </html>
   );
