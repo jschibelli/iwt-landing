@@ -18,6 +18,20 @@ export interface Project {
   aiContribution: AIContribution;
   navigation: Navigation;
   tags: string[];
+  /** Optional one-sentence summary for the Problem section */
+  problemSummary?: string;
+  /** Optional one-sentence summary for the Solution section */
+  solutionSummary?: string;
+  /** Optional one-sentence summary for the Process section */
+  processSummary?: string;
+  /** Optional one-sentence summary for the Results section */
+  resultsSummary?: string;
+  /** Optional one-sentence summary for the Tech Stack section */
+  techStackSummary?: string;
+  /** Optional one-sentence summary for the Team section */
+  teamSummary?: string;
+  /** Optional one-sentence summary for the Testimonial section */
+  testimonialSummary?: string;
 }
 
 export interface ProcessStep {

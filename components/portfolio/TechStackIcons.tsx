@@ -9,6 +9,8 @@ interface TechStackIconsProps {
 }
 
 export default function TechStackIcons({ project }: TechStackIconsProps) {
+  if (!project.techStack || project.techStack.length === 0) return null;
+
   // Group technologies by category
   const techByCategory = project.techStack.reduce((acc, tech) => {
     if (!acc[tech.category]) {
@@ -25,9 +27,13 @@ export default function TechStackIcons({ project }: TechStackIconsProps) {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Technology Stack
           </h2>
-          <p className="text-lg text-teal-100 max-w-2xl mx-auto">
-            The tools and technologies that power this solution
-          </p>
+          {project.techStackSummary ? (
+            <p className="text-lg text-teal-100 max-w-2xl mx-auto">{project.techStackSummary}</p>
+          ) : (
+            <p className="text-lg text-teal-100 max-w-2xl mx-auto">
+              The tools and technologies that power this solution
+            </p>
+          )}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -40,8 +40,8 @@ export default function About() {
         </svg>
       </div>
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">{content.heading}</h2>
-        <p className="text-lg text-teal-400 font-semibold mb-4">{content.tagline}</p>
+        <h2 className="text-3xl text-teal-400 md:text-4xl font-heading font-bold mb-2">{content.heading}</h2>
+        <p className="text-lg text-white font-semibold mb-4">{content.tagline}</p>
         <p className="text-gray-300 font-body mb-8">{content.description}</p>
         <ul className="text-left max-w-xl mx-auto mb-8 space-y-2">
           {content.bullets.map((item, i) => (

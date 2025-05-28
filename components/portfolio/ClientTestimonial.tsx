@@ -10,6 +10,8 @@ interface ClientTestimonialProps {
 }
 
 export default function ClientTestimonial({ project }: ClientTestimonialProps) {
+  if (!project.testimonial) return null;
+
   return (
     <section className="py-10 md:py-16 bg-gradient-to-br from-[#13293d] to-[#0a2236]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -39,6 +41,10 @@ export default function ClientTestimonial({ project }: ClientTestimonialProps) {
               <p className="text-teal-300">Client</p>
             </div>
           </div>
+
+          {project.testimonialSummary && (
+            <p className="text-lg text-teal-200 text-center mb-4">{project.testimonialSummary}</p>
+          )}
 
           <div className="relative">
             <Quote className="w-20 h-20 text-teal-700/10 absolute -top-8 -left-8" />

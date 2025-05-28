@@ -40,6 +40,9 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
                   The Challenge
                 </h2>
               </div>
+              {project.problemSummary && (
+                <p className="text-sm text-orange-200 mb-2 font-semibold">{project.problemSummary}</p>
+              )}
               <p className="text-teal-100 leading-relaxed">
                 {project.problem}
               </p>
@@ -74,6 +77,9 @@ export default function ProblemSolution({ project }: ProblemSolutionProps) {
                   Our Solution
                 </h2>
               </div>
+              {project.solutionSummary && (
+                <p className="text-sm text-teal-200 mb-2 font-semibold">{project.solutionSummary}</p>
+              )}
               <p className="text-teal-100 leading-relaxed">
                 {project.solution}
               </p>

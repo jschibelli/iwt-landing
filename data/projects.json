@@ -5,8 +5,8 @@
       "slug": "ecommerce-platform",
       "name": "E-Commerce Platform Launch",
       "industry": "Retail",
-      "keyMetric": "300% Revenue Growth",
-      "heroImage": "/images/projects/ecommerce-hero.jpg",
+      "keyMetric": "85% Revenue Growth",
+      "heroImage": "../../public/e-commerce-placeholder.png",
       "gallery": [
         "/images/projects/ecommerce-1.jpg",
         "/images/projects/ecommerce-2.jpg",
@@ -17,28 +17,38 @@
       "solution": "We developed a full-stack Next.js application with real-time inventory tracking, AI-powered product recommendations, and a seamless checkout experience. The solution integrated with their existing systems while providing new capabilities.",
       "processSteps": [
         {
-          "title": "Discovery",
-          "description": "Conducted stakeholder interviews and market research to define requirements and success metrics.",
-          "duration": "2 weeks"
-        },
-        {
-          "title": "Design",
-          "description": "Delivered interactive Figma prototypes and iterated based on client feedback.",
+          "title": "Discovery & Planning",
+          "description": "Conducted stakeholder interviews, analyzed existing systems, and created a detailed project roadmap with clear milestones and deliverables.",
           "duration": "3 weeks"
         },
         {
-          "title": "Development",
-          "description": "Built a full-stack Next.js app with real-time inventory and secure checkout.",
-          "duration": "8 weeks"
+          "title": "UX/UI Design",
+          "description": "Created user flows, wireframes, and high-fidelity designs in Figma. Conducted user testing sessions and iterated based on feedback.",
+          "duration": "4 weeks"
         },
         {
-          "title": "Launch",
-          "description": "Deployed to scalable cloud infrastructure with zero downtime.",
-          "duration": "1 week"
+          "title": "Development Phase 1",
+          "description": "Built core e-commerce functionality including product catalog, shopping cart, and user authentication. Implemented Stripe integration for payments.",
+          "duration": "6 weeks"
         },
         {
-          "title": "Support",
-          "description": "Provided ongoing monitoring, feature updates, and analytics reporting.",
+          "title": "Development Phase 2",
+          "description": "Developed inventory management system, order processing, and admin dashboard. Implemented real-time stock updates and order notifications.",
+          "duration": "5 weeks"
+        },
+        {
+          "title": "Testing & QA",
+          "description": "Conducted comprehensive testing including load testing, security audits, and user acceptance testing. Fixed critical issues and optimized performance.",
+          "duration": "3 weeks"
+        },
+        {
+          "title": "Launch & Migration",
+          "description": "Executed data migration from legacy system, deployed to production with zero downtime, and provided 24/7 support during launch week.",
+          "duration": "2 weeks"
+        },
+        {
+          "title": "Post-Launch Support",
+          "description": "Monitoring system performance, gathering user feedback, and implementing improvements. Regular security updates and feature enhancements.",
           "duration": "Ongoing"
         }
       ],
@@ -46,17 +56,17 @@
         "metrics": [
           {
             "label": "Revenue Growth",
-            "value": "300%",
+            "value": "85%",
             "description": "Year-over-year increase"
           },
           {
             "label": "Conversion Rate",
-            "value": "4.2%",
-            "description": "Up from 1.8%"
+            "value": "2.8%",
+            "description": "Up from 1.2%"
           },
           {
             "label": "Customer Satisfaction",
-            "value": "4.8/5",
+            "value": "4.6/5",
             "description": "Based on post-purchase surveys"
           }
         ],
@@ -66,7 +76,7 @@
           "datasets": [
             {
               "label": "Revenue",
-              "data": [100, 150, 200, 300]
+              "data": [100, 125, 150, 185]
             }
           ]
         }
@@ -74,23 +84,43 @@
       "techStack": [
         {
           "name": "Next.js",
-          "icon": "nextjs",
+          "icon": "/icons/nextjs.svg",
           "category": "Frontend"
         },
         {
           "name": "TypeScript",
-          "icon": "typescript",
+          "icon": "/icons/typescript.svg",
           "category": "Language"
         },
         {
           "name": "Tailwind CSS",
-          "icon": "tailwind",
+          "icon": "/icons/tailwind.svg",
           "category": "Styling"
         },
         {
           "name": "PostgreSQL",
-          "icon": "postgresql",
+          "icon": "/icons/postgresql.svg",
           "category": "Database"
+        },
+        {
+          "name": "Stripe",
+          "icon": "/icons/stripe.svg",
+          "category": "Payment"
+        },
+        {
+          "name": "AWS",
+          "icon": "/icons/aws.svg",
+          "category": "Cloud"
+        },
+        {
+          "name": "Redis",
+          "icon": "/icons/redis.svg",
+          "category": "Cache"
+        },
+        {
+          "name": "Docker",
+          "icon": "/icons/docker.svg",
+          "category": "DevOps"
         }
       ],
       "team": {
@@ -120,8 +150,9 @@
         ]
       },
       "client": {
-        "name": "RetailPlus Inc.",
-        "logo": "/images/clients/retailplus-logo.png",
+        "name": "Retail Plus",
+        "logo": "/images/clients/retailPlus.png",
+        "industry": "Retail",
         "duration": "6 months"
       },
       "testimonial": {
@@ -138,7 +169,14 @@
         "previousSlug": "healthcare-app",
         "nextSlug": "fintech-dashboard"
       },
-      "tags": ["e-commerce", "retail", "ai-enhanced", "nextjs", "typescript"]
+      "tags": ["e-commerce", "retail", "ai-enhanced", "nextjs", "typescript"],
+      "problemSummary": "The client struggled with outdated inventory and engagement systems.",
+      "solutionSummary": "We delivered a modern, AI-powered e-commerce platform.",
+      "processSummary": "A structured, phased approach ensured on-time delivery.",
+      "resultsSummary": "Significant revenue growth and improved customer satisfaction.",
+      "techStackSummary": "A robust, scalable stack powered the transformation.",
+      "teamSummary": "A hybrid team of experts and AI worked together.",
+      "testimonialSummary": "Client praised the impact and innovation delivered."
     },
     {
       "id": "healthcare-app-2024",
@@ -148,9 +186,9 @@
       "keyMetric": "2x Patient Retention",
       "heroImage": "/images/projects/placeholder.jpg",
       "gallery": ["/images/projects/placeholder.jpg"],
-      "summary": "A HIPAA-compliant platform for booking and managing appointments, with AI-driven reminders and analytics.",
-      "problem": "Manual scheduling led to missed appointments and inefficiency.",
-      "solution": "Automated scheduling, reminders, and analytics dashboard.",
+      "summary": "A HIPAA-compliant platform that streamlined appointment booking and management for healthcare providers, reducing no-shows and improving patient satisfaction through AI-driven reminders and analytics.",
+      "problem": "Healthcare staff spent hours each week manually scheduling appointments, leading to frequent no-shows, inefficiency, and patient frustration.",
+      "solution": "We built an automated scheduling platform with AI-powered reminders and a real-time analytics dashboard, freeing up staff time and improving patient engagement.",
       "processSteps": [
         {"title": "Discovery", "description": "Stakeholder interviews and workflow mapping.", "duration": "1 week"},
         {"title": "Design", "description": "Wireframes and user testing.", "duration": "2 weeks"},
@@ -188,7 +226,14 @@
       "testimonial": {"quote": "The platform transformed our patient experience.", "author": "Dr. Lee", "position": "CMO", "company": "HealthFirst"},
       "aiContribution": {"percentage": 25, "description": "AI for reminders and analytics."},
       "navigation": {"previousSlug": "fintech-dashboard", "nextSlug": "ecommerce-platform"},
-      "tags": ["healthcare", "mobile", "ai", "react-native"]
+      "tags": ["healthcare", "mobile", "ai", "react-native"],
+      "problemSummary": "Manual scheduling caused missed appointments and wasted staff time.",
+      "solutionSummary": "We built an automated scheduling platform with AI-powered reminders and a real-time analytics dashboard, freeing up staff time and improving patient engagement.",
+      "processSummary": "A structured, phased approach ensured on-time delivery.",
+      "resultsSummary": "Significant patient retention and improved patient satisfaction.",
+      "techStackSummary": "A robust, scalable stack powered the transformation.",
+      "teamSummary": "A hybrid team of experts and AI worked together.",
+      "testimonialSummary": "Client praised the impact and innovation delivered."
     },
     {
       "id": "fintech-dashboard-2024",
@@ -198,9 +243,9 @@
       "keyMetric": "+120% Data Insights",
       "heroImage": "/images/projects/placeholder.jpg",
       "gallery": ["/images/projects/placeholder.jpg"],
-      "summary": "A real-time dashboard for financial analytics, with AI-powered anomaly detection and reporting.",
-      "problem": "Manual data analysis was slow and error-prone.",
-      "solution": "Automated data pipelines and AI-driven insights.",
+      "summary": "A real-time analytics dashboard that empowered finance teams to detect anomalies instantly, automate reporting, and make data-driven decisions with confidence.",
+      "problem": "Financial analysts struggled with slow, manual data analysis, making it difficult to spot anomalies and respond quickly to issues.",
+      "solution": "We delivered an automated data pipeline and AI-driven dashboard, enabling instant anomaly detection and actionable insights for faster, smarter decisions.",
       "processSteps": [
         {"title": "Discovery", "description": "Requirements and data mapping.", "duration": "1 week"},
         {"title": "Design", "description": "Dashboard wireframes.", "duration": "1 week"},
@@ -238,7 +283,14 @@
       "testimonial": {"quote": "We now spot issues instantly and make better decisions.", "author": "M. Patel", "position": "CFO", "company": "FinSight"},
       "aiContribution": {"percentage": 30, "description": "AI for anomaly detection."},
       "navigation": {"previousSlug": "ecommerce-platform", "nextSlug": "healthcare-app"},
-      "tags": ["fintech", "dashboard", "ai", "nextjs"]
+      "tags": ["fintech", "dashboard", "ai", "nextjs"],
+      "problemSummary": "Manual analysis delayed anomaly detection and decision-making.",
+      "solutionSummary": "",
+      "processSummary": "A structured, phased approach ensured on-time delivery.",
+      "resultsSummary": "Significant data insights and improved decision-making.",
+      "techStackSummary": "A robust, scalable stack powered the transformation.",
+      "teamSummary": "A hybrid team of experts and AI worked together.",
+      "testimonialSummary": "Client praised the impact and innovation delivered."
     }
   ]
 } 

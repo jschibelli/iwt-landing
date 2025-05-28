@@ -9,6 +9,8 @@ interface TeamCompositionProps {
 }
 
 export default function TeamComposition({ project }: TeamCompositionProps) {
+  if ((!project.team?.human || project.team.human.length === 0) && (!project.team?.ai || project.team.ai.length === 0)) return null;
+
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,9 +18,13 @@ export default function TeamComposition({ project }: TeamCompositionProps) {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Team Composition
           </h2>
-          <p className="text-lg text-teal-100 max-w-2xl mx-auto">
-            Our hybrid human+AI approach combines the best of both worlds
-          </p>
+          {project.teamSummary ? (
+            <p className="text-lg text-teal-100 max-w-2xl mx-auto">{project.teamSummary}</p>
+          ) : (
+            <p className="text-lg text-teal-100 max-w-2xl mx-auto">
+              Our hybrid human+AI approach combines the best of both worlds
+            </p>
+          )}
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">

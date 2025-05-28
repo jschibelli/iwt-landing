@@ -29,8 +29,8 @@ export default function Services() {
   return (
     <section id="services" className="bg-[#111827] text-white py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-teal-400 text-left md:text-center">Our Services</h2>
-        <p className="text-lg md:text-xl text-teal-100 text-left md:text-center mb-6">Comprehensive technology solutions to drive your business forward</p>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-teal-400 text-center">Comprehensive technology solutions driving your business forward</h2>
+        {/* <p className="text-lg md:text-xl text-teal-100 text-left md:text-center mb-6">Comprehensive technology solutions to drive your business forward</p> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {services.map((service, i) => {
             const Icon = iconMap[service.icon];
