@@ -2,11 +2,15 @@
 module.exports = {
   darkMode: 'media',
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './lib/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   theme: {
     extend: {
       colors: {
@@ -32,9 +36,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        heading: ['Montserrat', 'ui-sans-serif', 'system-ui'],
-        body: ['Roboto', 'sans-serif'],
+        sans: ['var(--font-roboto)', 'ui-sans-serif', 'system-ui'],
+        heading: ['var(--font-montserrat)', 'ui-sans-serif', 'system-ui'],
+        body: ['var(--font-roboto)', 'sans-serif'],
       },
       spacing: {
         'section': '6rem',
