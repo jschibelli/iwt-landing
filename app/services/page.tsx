@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from 'next/image';
 import { Code, Palette, Cloud, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -106,11 +105,9 @@ export default function ServicesPage() {
                 {service.caseStudies[0] && (
                   <div className="flex-1">
                     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                      <Image
+                      <img
                         src={service.caseStudies[0].image}
                         alt={service.caseStudies[0].title}
-                        width={400}
-                        height={192}
                         className="w-full h-48 object-cover"
                       />
                       <div className="p-6">

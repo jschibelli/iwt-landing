@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -38,17 +38,40 @@ export default function ContactForm() {
     resolver: zodResolver(formSchema),
   });
 
+  // Load reCAPTCHA script
+  useEffect(() => {
+    const scriptId = "recaptcha-enterprise";
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LcoBEwrAAAAAG4CiAT9uydgXIzGX1ZlvfwdwAlR";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Wait for grecaptcha to be available
+    if (!(window as any).grecaptcha || !(window as any).grecaptcha.enterprise) {
+      setSubmitStatus({ type: "error", message: "reCAPTCHA not loaded. Please try again." });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
+      const token = await (window as any).grecaptcha.enterprise.execute(
+        "6LcoBEwrAAAAAG4CiAT9uydgXIzGX1ZlvfwdwAlR",
+        { action: "CONTACT_FORM" }
+      );
       const response = await fetch("/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptchaToken: token }),
       });
 
       if (!response.ok) {

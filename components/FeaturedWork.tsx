@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from 'next/image';
 
 interface Project {
   title: string;
@@ -27,11 +26,9 @@ export default function FeaturedWork() {
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
           {projects.map((project, i) => (
             <div key={i} className="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow bg-white border border-orange-100">
-              <Image
+              <img
                 src={project.image}
                 alt={project.title}
-                width={400}
-                height={224}
                 className="w-full h-56 object-cover object-center"
                 loading="lazy"
               />

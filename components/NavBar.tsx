@@ -5,7 +5,7 @@ export function NavBar() {
   return (
     <nav aria-label="Main navigation" className="flex items-center gap-6">
       <Link href="/">
-        <Image src="/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" width={40} height={40} className="mr-4" />
+        <Image src="../public/intraweb-logo-white.png" alt="IntraWeb Technologies Logo" width={40} height={40} className="mr-4" />
       </Link>
       <Link href="/" className="focus:outline-brand-primary">Home</Link>
       <Link href="/services" className="focus:outline-brand-primary">Services</Link>

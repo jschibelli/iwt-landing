@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from 'next/image';
 
 interface Tech {
   name: string;
@@ -31,11 +30,9 @@ export default function TechStack() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <Image
+              <img
                 src={item.logo}
                 alt={item.alt}
-                width={48}
-                height={48}
                 className="h-12 w-auto mb-2"
                 loading="lazy"
               />
