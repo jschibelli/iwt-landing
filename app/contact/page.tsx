@@ -32,8 +32,8 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-teal-400 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:contact@intrawebtech.com" className="text-gray-300 hover:text-teal-400 transition-colors">
-                      contact@intrawebtech.com
+                    <a href="mailto:info@intrawebtech.com" className="text-gray-300 hover:text-teal-400 transition-colors">
+                      info@intrawebtech.com
                     </a>
                   </div>
                 </div>
@@ -41,8 +41,8 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-teal-400 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <a href="tel:+1234567890" className="text-gray-300 hover:text-teal-400 transition-colors">
-                      +1 (234) 567-890
+                    <a href="tel:+18622079004" className="text-gray-300 hover:text-teal-400 transition-colors">
+                      (862) 207-9004
                     </a>
                   </div>
                 </div>
@@ -51,9 +51,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-300">
-                      123 Tech Street<br />
-                      San Francisco, CA 94107<br />
-                      United States
+                      Towaco, New Jersey
                     </p>
                   </div>
                 </div>
