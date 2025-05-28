@@ -35,6 +35,13 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
+          href="https://fonts.gstatic.com/s/montserrat/v26/JTUQjIg1_i6t8kCHKm45_QphziTn89dtpQ.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
           href="/intraweb-logo-white.png"
           as="image"
           type="image/png"
