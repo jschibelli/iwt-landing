@@ -66,7 +66,8 @@ export default function ContactForm() {
         "6LcoBEwrAAAAAG4CiAT9uydgXIzGX1ZlvfwdwAlR",
         { action: "CONTACT_FORM" }
       );
-      const response = await fetch("/api/lead", {
+
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
