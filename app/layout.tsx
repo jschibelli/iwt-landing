@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/shared/navbar";
 import { Footer } from "../components/Footer";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 export const metadata = {
   title: "IntraWeb Technologies",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <GoogleAnalytics />
         <Navbar />
         {children}
         <Footer />
