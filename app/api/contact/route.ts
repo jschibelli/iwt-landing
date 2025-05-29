@@ -11,74 +11,12 @@ const formSchema = z.object({
   company: z.string().optional(),
   service: z.string().optional(),
   message: z.string().min(10),
-  recaptchaToken: z.string(),
 });
-
-type VerifyRecaptchaParams = {
-  token: string;
-  action: string;
-};
-
-async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promise<boolean> {
-  const apiKey = process.env.RECAPTCHA_API_KEY;
-  if (!apiKey) {
-    console.error('reCAPTCHA API key not set in environment variables');
-    return false;
-  }
-  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/intrawebtech/assessments?key=${apiKey}`;
-  const body = {
-    event: {
-      token,
-      expectedAction: action,
-      siteKey: "6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL",
-    },
-  };
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) {
-      const errorText = await res.text();
-      console.error("reCAPTCHA REST API error:", errorText);
-      return false;
-    }
-    const data = await res.json();
-    console.log('reCAPTCHA verification response:', data);
-    if (!data.tokenProperties || !data.tokenProperties.valid) {
-      console.error(`reCAPTCHA token invalid: ${data.tokenProperties?.invalidReason}`);
-      return false;
-    }
-    if (data.tokenProperties.action !== action) {
-      console.error("reCAPTCHA action mismatch");
-      return false;
-    }
-    if (!data.riskAnalysis || typeof data.riskAnalysis.score !== "number") {
-      console.error("reCAPTCHA risk analysis missing");
-      return false;
-    }
-    // Lowered risk score threshold for testing
-    return data.riskAnalysis.score >= 0.1;
-  } catch (error) {
-    console.error("Error verifying reCAPTCHA via REST API:", error);
-    return false;
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = formSchema.parse(body);
-
-    // Verify reCAPTCHA
-    const recaptchaValid = await verifyRecaptcha({
-      token: validatedData.recaptchaToken,
-      action: "CONTACT_FORM",
-    });
-    if (!recaptchaValid) {
-      return NextResponse.json({ message: "reCAPTCHA verification failed" }, { status: 400 });
-    }
 
     const { name, email, company, service, message } = validatedData;
 
