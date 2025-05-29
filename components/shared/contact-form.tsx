@@ -28,6 +28,7 @@ export default function ContactForm() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
 
   const {
     register,
@@ -38,7 +39,7 @@ export default function ContactForm() {
     resolver: zodResolver(formSchema),
   });
 
-  // Load reCAPTCHA script
+  // Load reCAPTCHA script and set ready state
   useEffect(() => {
     const scriptId = "recaptcha-enterprise";
     if (!document.getElementById(scriptId)) {
@@ -46,7 +47,24 @@ export default function ContactForm() {
       script.id = scriptId;
       script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86";
       script.async = true;
+      script.onload = () => {
+        if ((window as any).grecaptcha && (window as any).grecaptcha.enterprise) {
+          (window as any).grecaptcha.enterprise.ready(() => {
+            setRecaptchaReady(true);
+          });
+        }
+      };
+      script.onerror = () => {
+        setSubmitStatus({ type: "error", message: "Failed to load reCAPTCHA. Please disable ad blockers and try again." });
+      };
       document.body.appendChild(script);
+    } else {
+      // Script already loaded
+      if ((window as any).grecaptcha && (window as any).grecaptcha.enterprise) {
+        (window as any).grecaptcha.enterprise.ready(() => {
+          setRecaptchaReady(true);
+        });
+      }
     }
   }, []);
 
@@ -54,42 +72,51 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Wait for grecaptcha to be available
-    if (!(window as any).grecaptcha || !(window as any).grecaptcha.enterprise) {
-      setSubmitStatus({ type: "error", message: "reCAPTCHA not loaded. Please try again." });
+    if (!recaptchaReady || !((window as any).grecaptcha && (window as any).grecaptcha.enterprise)) {
+      setSubmitStatus({ type: "error", message: "reCAPTCHA not loaded. Please try again or disable ad blockers." });
       setIsSubmitting(false);
       return;
     }
 
     try {
-      const token = await (window as any).grecaptcha.enterprise.execute(
-        "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
-        { action: "CONTACT_FORM" }
-      );
+      (window as any).grecaptcha.enterprise.ready(async () => {
+        try {
+          const token = await (window as any).grecaptcha.enterprise.execute(
+            "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
+            { action: "CONTACT_FORM" }
+          );
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data, recaptchaToken: token }),
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...data, recaptchaToken: token }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to send message");
+          }
+
+          setSubmitStatus({
+            type: "success",
+            message: "Thank you for your message! We'll get back to you soon.",
+          });
+          reset();
+        } catch (error) {
+          setSubmitStatus({
+            type: "error",
+            message: "Failed to send message. Please try again later.",
+          });
+        } finally {
+          setIsSubmitting(false);
+        }
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
-
-      setSubmitStatus({
-        type: "success",
-        message: "Thank you for your message! We'll get back to you soon.",
-      });
-      reset();
     } catch (error) {
       setSubmitStatus({
         type: "error",
-        message: "Failed to send message. Please try again later.",
+        message: "reCAPTCHA failed to execute. Please try again later.",
       });
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -190,9 +217,9 @@ export default function ContactForm() {
       <button
         type="submit"
         className="w-full px-6 py-3 rounded-md bg-orange-500 text-white font-semibold hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !recaptchaReady}
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? "Sending..." : !recaptchaReady ? "Loading reCAPTCHA..." : "Send Message"}
       </button>
     </form>
   );
