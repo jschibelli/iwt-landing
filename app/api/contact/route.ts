@@ -25,7 +25,7 @@ async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promis
     console.error('reCAPTCHA API key not set in environment variables');
     return false;
   }
-  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/YOUR_PROJECT_ID/assessments?key=${apiKey}`;
+  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/intrawebtech/assessments?key=${apiKey}`;
   const body = {
     event: {
       token,
@@ -45,6 +45,7 @@ async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promis
       return false;
     }
     const data = await res.json();
+    console.log('reCAPTCHA verification response:', data);
     if (!data.tokenProperties || !data.tokenProperties.valid) {
       console.error(`reCAPTCHA token invalid: ${data.tokenProperties?.invalidReason}`);
       return false;
@@ -57,8 +58,8 @@ async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promis
       console.error("reCAPTCHA risk analysis missing");
       return false;
     }
-    // You can adjust the risk score threshold as needed
-    return data.riskAnalysis.score > 0.5;
+    // Lowered risk score threshold for testing
+    return data.riskAnalysis.score >= 0.1;
   } catch (error) {
     console.error("Error verifying reCAPTCHA via REST API:", error);
     return false;
