@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -28,7 +28,6 @@ export default function ContactForm() {
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const [recaptchaReady, setRecaptchaReady] = useState(false);
 
   const {
     register,
@@ -39,79 +38,31 @@ export default function ContactForm() {
     resolver: zodResolver(formSchema),
   });
 
-  // Load reCAPTCHA script and set ready state
-  useEffect(() => {
-    const scriptId = "recaptcha-enterprise";
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL";
-      script.async = true;
-      script.onload = () => {
-        if ((window as any).grecaptcha && (window as any).grecaptcha.enterprise) {
-          (window as any).grecaptcha.enterprise.ready(() => {
-            setRecaptchaReady(true);
-          });
-        }
-      };
-      script.onerror = () => {
-        setSubmitStatus({ type: "error", message: "Failed to load reCAPTCHA. Please disable ad blockers and try again." });
-      };
-      document.body.appendChild(script);
-    } else {
-      // Script already loaded
-      if ((window as any).grecaptcha && (window as any).grecaptcha.enterprise) {
-        (window as any).grecaptcha.enterprise.ready(() => {
-          setRecaptchaReady(true);
-        });
-      }
-    }
-  }, []);
-
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
-    if (!recaptchaReady || !((window as any).grecaptcha && (window as any).grecaptcha.enterprise)) {
-      setSubmitStatus({ type: "error", message: "reCAPTCHA not loaded. Please try again or disable ad blockers." });
-      setIsSubmitting(false);
-      return;
-    }
     try {
-      (window as any).grecaptcha.enterprise.ready(async () => {
-        try {
-          const token = await (window as any).grecaptcha.enterprise.execute(
-            "6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL",
-            { action: "CONTACT_FORM" }
-          );
-          const response = await fetch("/api/contact", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ ...data, recaptchaToken: token }),
-          });
-          if (!response.ok) {
-            throw new Error("Failed to send message");
-          }
-          setSubmitStatus({
-            type: "success",
-            message: "Thank you for your message! We'll get back to you soon.",
-          });
-          reset();
-        } catch (error) {
-          setSubmitStatus({
-            type: "error",
-            message: "Failed to send message. Please try again later.",
-          });
-        } finally {
-          setIsSubmitting(false);
-        }
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you for your message! We'll get back to you soon.",
+      });
+      reset();
     } catch (error) {
       setSubmitStatus({
         type: "error",
-        message: "reCAPTCHA failed to execute. Please try again later.",
+        message: "Failed to send message. Please try again later.",
       });
+    } finally {
       setIsSubmitting(false);
     }
   };
