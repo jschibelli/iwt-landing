@@ -44,7 +44,7 @@ export default function ContactForm() {
     if (!document.getElementById(scriptId)) {
       const script = document.createElement("script");
       script.id = scriptId;
-      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LcoBEwrAAAAAG4CiAT9uydgXIzGX1ZlvfwdwAlR";
+      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86";
       script.async = true;
       document.body.appendChild(script);
     }
@@ -63,7 +63,7 @@ export default function ContactForm() {
 
     try {
       const token = await (window as any).grecaptcha.enterprise.execute(
-        "6LcoBEwrAAAAAG4CiAT9uydgXIzGX1ZlvfwdwAlR",
+        "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
         { action: "CONTACT_FORM" }
       );
 
