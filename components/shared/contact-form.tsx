@@ -45,7 +45,7 @@ export default function ContactForm() {
     if (!document.getElementById(scriptId)) {
       const script = document.createElement("script");
       script.id = scriptId;
-      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86";
+      script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL";
       script.async = true;
       script.onload = () => {
         if ((window as any).grecaptcha && (window as any).grecaptcha.enterprise) {
@@ -71,21 +71,18 @@ export default function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
-
     if (!recaptchaReady || !((window as any).grecaptcha && (window as any).grecaptcha.enterprise)) {
       setSubmitStatus({ type: "error", message: "reCAPTCHA not loaded. Please try again or disable ad blockers." });
       setIsSubmitting(false);
       return;
     }
-
     try {
       (window as any).grecaptcha.enterprise.ready(async () => {
         try {
           const token = await (window as any).grecaptcha.enterprise.execute(
-            "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
+            "6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL",
             { action: "CONTACT_FORM" }
           );
-
           const response = await fetch("/api/contact", {
             method: "POST",
             headers: {
@@ -93,11 +90,9 @@ export default function ContactForm() {
             },
             body: JSON.stringify({ ...data, recaptchaToken: token }),
           });
-
           if (!response.ok) {
             throw new Error("Failed to send message");
           }
-
           setSubmitStatus({
             type: "success",
             message: "Thank you for your message! We'll get back to you soon.",
@@ -217,9 +212,9 @@ export default function ContactForm() {
       <button
         type="submit"
         className="w-full px-6 py-3 rounded-md bg-orange-500 text-white font-semibold hover:bg-teal-500 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        disabled={isSubmitting || !recaptchaReady}
+        disabled={isSubmitting}
       >
-        {isSubmitting ? "Sending..." : !recaptchaReady ? "Loading reCAPTCHA..." : "Send Message"}
+        {isSubmitting ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

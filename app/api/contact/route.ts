@@ -25,12 +25,12 @@ async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promis
     console.error('reCAPTCHA API key not set in environment variables');
     return false;
   }
-  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/angelic-ivy-461304-j2/assessments?key=${apiKey}`;
+  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/YOUR_PROJECT_ID/assessments?key=${apiKey}`;
   const body = {
     event: {
       token,
       expectedAction: action,
-      siteKey: "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
+      siteKey: "6LckZE4rAAAADYbgtBw5Zr-oazauVc7rKlBGpHL",
     },
   };
   try {
