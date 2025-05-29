@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import type { NextRequest } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -13,55 +14,69 @@ const formSchema = z.object({
   recaptchaToken: z.string(),
 });
 
-async function verifyRecaptcha(token: string) {
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) {
-    console.error('reCAPTCHA secret key not set in environment variables');
-    throw new Error('reCAPTCHA secret key not set');
+type VerifyRecaptchaParams = {
+  token: string;
+  action: string;
+};
+
+async function verifyRecaptcha({ token, action }: VerifyRecaptchaParams): Promise<boolean> {
+  const apiKey = process.env.RECAPTCHA_API_KEY;
+  if (!apiKey) {
+    console.error('reCAPTCHA API key not set in environment variables');
+    return false;
   }
-  
+  const url = `https://recaptchaenterprise.googleapis.com/v1/projects/angelic-ivy-461304-j2/assessments?key=${apiKey}`;
+  const body = {
+    event: {
+      token,
+      expectedAction: action,
+      siteKey: "6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86",
+    },
+  };
   try {
-    const res = await fetch(`https://recaptchaenterprise.googleapis.com/v1/projects/intrawebtech/assessments?key=${secret}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event: {
-          token,
-          siteKey: '6LfyLU0rAAAAAPee8cZJsIqKhsZd4ab2t8-7rq86',
-          expectedAction: 'CONTACT_FORM',
-        },
-      }),
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
-    
     if (!res.ok) {
-      const errorData = await res.text();
-      console.error('reCAPTCHA verification failed:', errorData);
+      const errorText = await res.text();
+      console.error("reCAPTCHA REST API error:", errorText);
       return false;
     }
-    
     const data = await res.json();
-    console.log('reCAPTCHA response:', data);
-    
-    // Check for success and risk score (adjust threshold as needed)
-    return data.tokenProperties?.valid && (!data.riskAnalysis || data.riskAnalysis.score > 0.5);
+    if (!data.tokenProperties || !data.tokenProperties.valid) {
+      console.error(`reCAPTCHA token invalid: ${data.tokenProperties?.invalidReason}`);
+      return false;
+    }
+    if (data.tokenProperties.action !== action) {
+      console.error("reCAPTCHA action mismatch");
+      return false;
+    }
+    if (!data.riskAnalysis || typeof data.riskAnalysis.score !== "number") {
+      console.error("reCAPTCHA risk analysis missing");
+      return false;
+    }
+    // You can adjust the risk score threshold as needed
+    return data.riskAnalysis.score > 0.5;
   } catch (error) {
-    console.error('Error verifying reCAPTCHA:', error);
+    console.error("Error verifying reCAPTCHA via REST API:", error);
     return false;
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = formSchema.parse(body);
 
     // Verify reCAPTCHA
-    const recaptchaValid = await verifyRecaptcha(validatedData.recaptchaToken);
+    const recaptchaValid = await verifyRecaptcha({
+      token: validatedData.recaptchaToken,
+      action: "CONTACT_FORM",
+    });
     if (!recaptchaValid) {
-      return NextResponse.json({ 
-        message: 'reCAPTCHA verification failed',
-        details: 'Please ensure you are not a bot and try again'
-      }, { status: 400 });
+      return NextResponse.json({ message: "reCAPTCHA verification failed" }, { status: 400 });
     }
 
     const { name, email, company, service, message } = validatedData;

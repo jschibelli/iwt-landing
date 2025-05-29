@@ -13,6 +13,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^6.1.0",
     "@hookform/resolvers": "^5.0.1",
     "@next/bundle-analyzer": "^15.3.2",
     "@radix-ui/react-dialog": "^1.1.13",
