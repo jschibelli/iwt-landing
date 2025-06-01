@@ -1,54 +1,124 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'media',
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './lib/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'media',
   theme: {
     extend: {
       colors: {
-        'brand-primary': '#2563eb',
-        'brand-secondary': '#0ea5e9',
-        'brand-accent': '#f59e42',
-        midnightNavy: '#0B1F36',
-        tealGreen: '#15B8A1',
-        orangeSunset: '#F59E0B',
-        purple: {
-          DEFAULT: '#7F5AF0',
-          light: '#9D7EF2',
-          dark: '#6A4AD0'
+        charcoal: {
+          50: '#f8f9fa',
+          100: '#e9ecef',
+          200: '#dee2e6',
+          300: '#ced4da',
+          400: '#adb5bd',
+          500: '#6c757d',
+          600: '#495057',
+          700: '#343a40',
+          800: '#212529',
+          900: '#0B1F36',
         },
         orange: {
-          DEFAULT: '#FF6B3B',
-          dark: '#E55A2A'
+          500: '#F59E0B',
+          600: '#D97706',
         },
-        charcoal: {
-          DEFAULT: '#333333',
-          800: '#242424',
-          900: '#1A1A1A'
-        }
+        teal: {
+          500: '#15B8A1',
+          600: '#0D9488',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        heading: ['Montserrat', 'ui-sans-serif', 'system-ui'],
-        body: ['Roboto', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
       },
-      spacing: {
-        'section': '6rem',
-      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.charcoal.900'),
+            a: {
+              color: theme('colors.orange.500'),
+              '&:hover': {
+                color: theme('colors.orange.600'),
+              },
+              fontWeight: '500',
+            },
+            h1: {
+              color: theme('colors.charcoal.900'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '700',
+              fontSize: '2.75rem', // ~44px
+              lineHeight: '1.1',
+              marginBottom: '1.5rem',
+            },
+            h2: {
+              color: theme('colors.charcoal.900'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '600',
+              fontSize: '2rem', // ~32px
+              marginTop: '2.5rem',
+              marginBottom: '1rem',
+            },
+            h3: {
+              color: theme('colors.charcoal.900'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '600',
+              fontSize: '1.5rem', // ~24px
+              marginTop: '2rem',
+              marginBottom: '0.75rem',
+            },
+            'ul > li::marker': {
+              color: theme('colors.orange.500'),
+            },
+            strong: { color: theme('colors.charcoal.900') },
+          },
+        },
+        invert: {
+          css: {
+            color: theme('colors.charcoal.50'),
+            a: {
+              color: theme('colors.orange.400'),
+              '&:hover': {
+                color: theme('colors.orange.500'),
+              },
+              fontWeight: '500',
+            },
+            h1: {
+              color: theme('colors.charcoal.50'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '700',
+              fontSize: '2.75rem',
+              lineHeight: '1.1',
+              marginBottom: '1.5rem',
+            },
+            h2: {
+              color: theme('colors.charcoal.50'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '600',
+              fontSize: '2rem',
+              marginTop: '2.5rem',
+              marginBottom: '1rem',
+            },
+            h3: {
+              color: theme('colors.charcoal.50'),
+              fontFamily: theme('fontFamily.heading').join(', '),
+              fontWeight: '600',
+              fontSize: '1.5rem',
+              marginTop: '2rem',
+              marginBottom: '0.75rem',
+            },
+            'ul > li::marker': {
+              color: theme('colors.orange.400'),
+            },
+            strong: { color: theme('colors.charcoal.50') },
+          },
+        },
+      }),
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),
-  ],
-  safelist: [
-    'bg-tealGreen',
-    'text-tealGreen',
   ],
 }; 
