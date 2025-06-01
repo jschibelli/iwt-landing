@@ -50,7 +50,7 @@
 
 ### 4.2 Services (0.5 day)
 - 3-1 grid with `lucide-react` icons
-- CTA: “Explore Our Services” (outline button)
+- CTA: "Explore Our Services" (outline button)
 
 ### 4.3 Technology Stack (0.5 day)
 - 2-row desktop / 3-col mobile grid
@@ -154,4 +154,39 @@
 - **Performance**: Next Image, font preload, code-split sections
 
 ---
+
+## Compliance
+
+This project includes several compliance features to ensure GDPR, CCPA, and accessibility standards are met:
+
+### Privacy and Legal Pages
+- `/privacy` - Privacy Policy page detailing data collection and usage
+- `/terms` - Terms of Service page outlining user obligations and legal terms
+- `/accessibility` - Accessibility Statement page with WCAG 2.1 AA compliance details
+
+### Cookie Consent
+- Enhanced cookie consent banner with category-based consent management
+- Blocks non-essential scripts until user consent is granted
+- Stores consent preferences in cookies
+- Supports granular control over analytics and marketing cookies
+
+### Cookie Audit Tool
+Run the cookie audit tool to identify third-party scripts that require consent:
+```bash
+npm run audit:cookies
+```
+
+### Environment Variables
+Configure compliance-related email addresses in `.env.local`:
+```
+NEXT_PUBLIC_PRIVACY_EMAIL=privacy@intrawebtech.com
+NEXT_PUBLIC_GA_ID=your-ga-id
+NEXT_PUBLIC_HUBSPOT_ID=your-hubspot-id
+```
+
+### HTTPS Enforcement
+The site enforces HTTPS in production through:
+- HSTS header configuration
+- Automatic HTTP to HTTPS redirection
+- Secure cookie settings
 
