@@ -14,7 +14,11 @@
     "audit:cookies": "ts-node scripts/auditCookies.ts"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@auth/prisma-adapter": "^2.9.1",
+=======
+    "@google-cloud/recaptcha-enterprise": "^6.1.0",
+>>>>>>> origin/main
     "@hookform/resolvers": "^5.0.1",
     "@next/bundle-analyzer": "^15.3.2",
     "@prisma/client": "^6.8.2",
