@@ -1,0 +1,500 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==============================
+// USER MANAGEMENT
+// ==============================
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(EDITOR)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  siteSettings   SiteSettings[]
+  heroes         Hero[]
+  companyInfo    CompanyInfo[]
+  services       Service[]
+  technologies   Technology[]
+  projects       Project[]
+  processSteps   ProcessStep[]
+  testimonials   Testimonial[]
+  teamMembers    TeamMember[]
+  faqs           FAQ[]
+  contentBlocks  ContentBlock[]
+  versions       ContentVersion[]
+  auditLogs      AuditLog[]
+}
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+// ==============================
+// CORE CONTENT MODELS
+// ==============================
+
+model SiteSettings {
+  id              String   @id @default(cuid())
+  companyName     String   @default("IntraWeb Technologies")
+  logoUrl         String?
+  primaryEmail    String   @default("contact@intrawebtech.com")
+  primaryPhone    String?
+  socialLinkedin  String?
+  socialTwitter   String?
+  socialFacebook  String?
+  analyticsId     String?
+  hubspotId       String?
+  locale          String   @default("en")
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  authorId        String?
+  author          User?    @relation(fields: [authorId], references: [id])
+}
+
+model Hero {
+  id              String   @id @default(cuid())
+  headline        String
+  subheading      String
+  ctaText         String   @default("Schedule a Consultation")
+  ctaUrl          String   @default("/contact")
+  synaplyText     String?  @default("Creators of SynaplyAI, launching April 2025")
+  locale          String   @default("en")
+  isActive        Boolean  @default(true)
+  isDraft         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  authorId        String?
+  author          User?    @relation(fields: [authorId], references: [id])
+
+  translations    HeroTranslation[]
+  versions        ContentVersion[]
+}
+
+model HeroTranslation {
+  id           String   @id @default(cuid())
+  heroId       String
+  locale       String
+  headline     String
+  subheading   String
+  ctaText      String
+  synaplyText  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  hero         Hero     @relation(fields: [heroId], references: [id], onDelete: Cascade)
+
+  @@unique([heroId, locale])
+}
+
+model CompanyInfo {
+  id                String   @id @default(cuid())
+  projectsCount     Int      @default(50)
+  retentionRate     Float    @default(96)
+  satisfactionRate  Float    @default(4.9)
+  aboutText         String?
+  missionText       String?
+  visionText        String?
+  locale            String   @default("en")
+  isActive          Boolean  @default(true)
+  isDraft           Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  authorId          String?
+  author            User?    @relation(fields: [authorId], references: [id])
+
+  translations      CompanyInfoTranslation[]
+  versions          ContentVersion[]
+}
+
+model CompanyInfoTranslation {
+  id            String      @id @default(cuid())
+  companyInfoId String
+  locale        String
+  aboutText     String?
+  missionText   String?
+  visionText    String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  companyInfo   CompanyInfo @relation(fields: [companyInfoId], references: [id], onDelete: Cascade)
+
+  @@unique([companyInfoId, locale])
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  icon         String   // Lucide icon name
+  order        Int
+  locale       String   @default("en")
+  isActive     Boolean  @default(true)
+  isDraft      Boolean  @default(false)
+  metadata     Json?    // Animation configs, styling overrides
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  authorId     String?
+  author       User?    @relation(fields: [authorId], references: [id])
+
+  translations ServiceTranslation[]
+  versions     ContentVersion[]
+}
+
+model ServiceTranslation {
+  id          String   @id @default(cuid())
+  serviceId   String
+  locale      String
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, locale])
+}
+
+model Technology {
+  id        String   @id @default(cuid())
+  name      String
+  logoUrl   String?
+  category  String   // "frontend", "backend", "database", "tools"
+  order     Int
+  locale    String   @default("en")
+  isActive  Boolean  @default(true)
+  isDraft   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String?
+  author    User?    @relation(fields: [authorId], references: [id])
+
+  translations TechnologyTranslation[]
+  versions     ContentVersion[]
+}
+
+model TechnologyTranslation {
+  id           String     @id @default(cuid())
+  technologyId String
+  locale       String
+  name         String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@unique([technologyId, locale])
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  industry    String?
+  imageUrl    String?
+  caseStudyUrl String?
+  keyMetric   String?  // e.g., "+120% Engagement"
+  order       Int
+  locale      String   @default("en")
+  isActive    Boolean  @default(true)
+  isDraft     Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+
+  translations ProjectTranslation[]
+  versions     ContentVersion[]
+}
+
+model ProjectTranslation {
+  id          String   @id @default(cuid())
+  projectId   String
+  locale      String
+  title       String
+  description String?
+  industry    String?
+  keyMetric   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, locale])
+}
+
+model ProcessStep {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  stepNumber  Int
+  locale      String   @default("en")
+  isActive    Boolean  @default(true)
+  isDraft     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+
+  translations ProcessStepTranslation[]
+  versions     ContentVersion[]
+}
+
+model ProcessStepTranslation {
+  id            String      @id @default(cuid())
+  processStepId String
+  locale        String
+  title         String
+  description   String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  processStep   ProcessStep @relation(fields: [processStepId], references: [id], onDelete: Cascade)
+
+  @@unique([processStepId, locale])
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  quote       String
+  authorName  String
+  authorTitle String?
+  company     String?
+  avatarUrl   String?
+  order       Int?
+  locale      String   @default("en")
+  isActive    Boolean  @default(true)
+  isDraft     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+
+  translations TestimonialTranslation[]
+  versions     ContentVersion[]
+}
+
+model TestimonialTranslation {
+  id            String      @id @default(cuid())
+  testimonialId String
+  locale        String
+  quote         String
+  authorTitle   String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  testimonial   Testimonial @relation(fields: [testimonialId], references: [id], onDelete: Cascade)
+
+  @@unique([testimonialId, locale])
+}
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  bio         String?
+  avatarUrl   String?
+  linkedinUrl String?
+  order       Int?
+  isAI        Boolean  @default(false)
+  locale      String   @default("en")
+  isActive    Boolean  @default(true)
+  isDraft     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+
+  translations TeamMemberTranslation[]
+  versions     ContentVersion[]
+}
+
+model TeamMemberTranslation {
+  id           String     @id @default(cuid())
+  teamMemberId String
+  locale       String
+  name         String
+  role         String
+  bio          String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  teamMember   TeamMember @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  @@unique([teamMemberId, locale])
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  order     Int?
+  locale    String   @default("en")
+  isActive  Boolean  @default(true)
+  isDraft   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String?
+  author    User?    @relation(fields: [authorId], references: [id])
+
+  translations FAQTranslation[]
+  versions     ContentVersion[]
+}
+
+model FAQTranslation {
+  id        String   @id @default(cuid())
+  faqId     String
+  locale    String
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  faq       FAQ      @relation(fields: [faqId], references: [id], onDelete: Cascade)
+
+  @@unique([faqId, locale])
+}
+
+// ==============================
+// FLEXIBLE CONTENT BLOCKS
+// ==============================
+
+model ContentBlock {
+  id            String             @id @default(cuid())
+  type          BlockType
+  sectionId     String             // Page section identifier
+  content       Json               // Flexible content structure
+  config        Json?              // Layout, styling configs
+  order         Int
+  locale        String             @default("en")
+  isActive      Boolean            @default(true)
+  isDraft       Boolean            @default(false)
+  variantLabel  String?            // For A/B testing
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  authorId      String?
+  author        User?              @relation(fields: [authorId], references: [id])
+
+  animations    AnimationConfig[]
+  versions      ContentVersion[]
+}
+
+enum BlockType {
+  CUSTOM_CTA
+  AI_GENERATED_SECTION
+  A_B_TEST_VARIANT
+  MARKETING_BANNER
+  SEASONAL_CONTENT
+}
+
+// ==============================
+// ANIMATION & INTERACTION
+// ==============================
+
+model AnimationConfig {
+  id           String       @id @default(cuid())
+  blockId      String
+  name         String       // "enter", "exit", "hover", "scroll"
+  enableMotion Boolean      @default(true)
+  duration     Float        @default(0.6)
+  delay        Float        @default(0)
+  easing       String       @default("easeOut")
+  triggerType  String       @default("viewport") // "viewport", "hover", "click"
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  block        ContentBlock @relation(fields: [blockId], references: [id], onDelete: Cascade)
+}
+
+// ==============================
+// AI ENHANCEMENT & TAGGING
+// ==============================
+
+model AIMetadata {
+  id            String          @id @default(cuid())
+  contentId     String
+  contentType   String          // "service", "testimonial", "contentBlock", etc.
+  aiAssisted    Boolean         @default(false)
+  prompt        String?         // Original AI prompt
+  confidence    Float?          // AI confidence score (0-1)
+  lastOptimized DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  tags          AIMetadataTag[]
+}
+
+model ContentTag {
+  id        String          @id @default(cuid())
+  name      String          @unique
+  category  String          // "ai-generated", "performance", "accessibility"
+  color     String?
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  tagged    AIMetadataTag[]
+}
+
+model AIMetadataTag {
+  id            String      @id @default(cuid())
+  aiMetadataId  String
+  contentTagId  String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  aiMetadata    AIMetadata  @relation(fields: [aiMetadataId], references: [id], onDelete: Cascade)
+  contentTag    ContentTag  @relation(fields: [contentTagId], references: [id], onDelete: Cascade)
+
+  @@unique([aiMetadataId, contentTagId])
+}
+
+// ==============================
+// VERSIONING & AUDIT
+// ==============================
+
+model ContentVersion {
+  id          String   @id @default(cuid())
+  contentId   String
+  contentType String   // "hero", "service", "testimonial", "contentBlock", etc.
+  version     Int
+  data        Json     // Snapshot of content at version
+  changeLog   String?
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+
+  // Polymorphic relations (optional - can reference specific content types)
+  hero         Hero?         @relation(fields: [contentId], references: [id])
+  service      Service?      @relation(fields: [contentId], references: [id])
+  technology   Technology?   @relation(fields: [contentId], references: [id])
+  project      Project?      @relation(fields: [contentId], references: [id])
+  processStep  ProcessStep?  @relation(fields: [contentId], references: [id])
+  testimonial  Testimonial?  @relation(fields: [contentId], references: [id])
+  teamMember   TeamMember?   @relation(fields: [contentId], references: [id])
+  faq          FAQ?          @relation(fields: [contentId], references: [id])
+  companyInfo  CompanyInfo?  @relation(fields: [contentId], references: [id])
+  contentBlock ContentBlock? @relation(fields: [contentId], references: [id])
+
+  @@unique([contentId, contentType, version])
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  actionType   String   // "CREATE", "UPDATE", "DELETE", "PUBLISH"
+  entityType   String   // "hero", "service", etc.
+  entityId     String
+  oldData      Json?    // Previous state (for UPDATE/DELETE)
+  newData      Json?    // New state (for CREATE/UPDATE)
+  performedBy  String?
+  performedAt  DateTime @default(now())
+  ipAddress    String?
+  userAgent    String?
+
+  user         User?    @relation(fields: [performedBy], references: [id])
+}

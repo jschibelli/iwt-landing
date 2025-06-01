@@ -107,15 +107,29 @@ export function Footer() {
                 href="/privacy-policy" 
                 className="hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-700 rounded"
               >
-                Privacy
+                Privacy Policy
               </Link>
               <Link 
                 href="/terms-of-service" 
                 className="hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-700 rounded"
               >
-                Terms
+                Terms of Service
+              </Link>
+              <Link 
+                href="/accessibility" 
+                className="hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-700 rounded"
+              >
+                Accessibility
               </Link>
             </div>
+            <p className="text-gray-400">
+              Data Subject Requests: <a 
+                href="mailto:contact@intrawebtech.com"
+                className="hover:text-orange-500"
+              >
+                contact@intrawebtech.com
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -173,7 +187,20 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="text-xs text-center mt-8">&copy; {new Date().getFullYear()} IntraWeb Technologies | <Link href="/privacy-policy" className="hover:text-orange-500">Privacy Policy</Link> | <Link href="/terms-of-service" className="hover:text-orange-500">Terms of Service</Link></div>
+          <div className="text-xs text-center mt-8">
+            &copy; {new Date().getFullYear()} IntraWeb Technologies |{' '}
+            <Link href="/privacy-policy" className="hover:text-orange-500">Privacy Policy</Link> |{' '}
+            <Link href="/terms-of-service" className="hover:text-orange-500">Terms of Service</Link> |{' '}
+            <Link href="/accessibility" className="hover:text-orange-500">Accessibility</Link>
+            <p className="text-gray-400 mt-2">
+              Data Subject Requests: <a 
+                href="mailto:contact@intrawebtech.com"
+                className="hover:text-orange-500"
+              >
+                contact@intrawebtech.com
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
