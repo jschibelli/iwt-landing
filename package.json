@@ -14,11 +14,8 @@
     "audit:cookies": "ts-node scripts/auditCookies.ts"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@google-cloud/recaptcha-enterprise": "^6.1.0",
-=======
     "@auth/prisma-adapter": "^2.9.1",
->>>>>>> 94e6494 (Enhance compliance features by adding privacy policy and terms of service pages with detailed content. Implement a cookie consent banner for GDPR and CCPA compliance, allowing users to manage their cookie preferences. Update footer to include links to new compliance pages and contact information for data subject requests. Refresh sitemap with updated URLs and last modified dates for improved SEO.)
+    "@google-cloud/recaptcha-enterprise": "^6.1.0",
     "@hookform/resolvers": "^5.0.1",
     "@next/bundle-analyzer": "^15.3.2",
     "@prisma/client": "^6.8.2",
